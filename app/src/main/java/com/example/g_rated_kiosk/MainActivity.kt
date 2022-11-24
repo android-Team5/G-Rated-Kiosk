@@ -1,19 +1,20 @@
 package com.example.g_rated_kiosk
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.os.Debug
-import android.util.Log
 import android.view.View
 import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
+import com.example.g_rated_kiosk.databinding.FhtgBinding
 import com.example.g_rated_kiosk.databinding.TestPageBinding
 
-class MainActivity : AppCompatActivity() {
 
+class MainActivity : AppCompatActivity() {
+    var eatWhere=""
     // 처음 메뉴 등록
     fun initMenu(){
         MenuController.AddMenu(Menu(MenuType.BURGER,"싸이버거",6500,getDrawable(R.drawable.psy_b)))
@@ -57,26 +58,36 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val binding = TestPageBinding.inflate(layoutInflater)
+
+        val fhtgBinding = FhtgBinding.inflate(layoutInflater)
+        val testPageBinding = TestPageBinding.inflate(layoutInflater)
+
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+        setContentView(testPageBinding.root)
         initMenu()
 
-        val grid = binding.grid
-
-        binding.burgerButton.setOnClickListener{
+        val grid = testPageBinding.grid
+        fhtgBinding.fromHere.setOnClickListener {
+            eatWhere = "fromHere"
+            //val intent = Intent(this, :class.java)
+        }
+        fhtgBinding.toGo.setOnClickListener {
+            eatWhere = "toGo"
+        }
+        testPageBinding.burgerButton.setOnClickListener{
             ChangeMenuType(grid,MenuType.BURGER)
         }
 
-        binding.sideButton.setOnClickListener{
+        testPageBinding.sideButton.setOnClickListener{
             ChangeMenuType(grid,MenuType.SIDE)
         }
 
-        binding.colaButton.setOnClickListener{
+        testPageBinding.colaButton.setOnClickListener{
             ChangeMenuType(grid,MenuType.DRINKS)
         }
 
-        ChangeMenuType(binding.grid,MenuType.BURGER)
+        ChangeMenuType(testPageBinding.grid,MenuType.BURGER)
+
 
 
     }
