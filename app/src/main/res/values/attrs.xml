@@ -1,2 +1,8 @@
 <resources>
+    <declare-styleable name="MenuView">
+        <attr name="menuName" format="string"/>
+        <attr name="menuImage" format="integer"/>
+        <attr name="menuPrice" format="string"/>
+        <attr name="menuRoot" format="float"/>
+    </declare-styleable>
 </resources>

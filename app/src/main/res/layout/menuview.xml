@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:rowCount="3"
-    android:layout_width="150dp"
-    android:orientation="vertical"
-    android:layout_height="200dp">
 
-    <TextView android:text="싸이 버거" android:textAlignment="center" android:textSize="24dp" android:layout_rowWeight="1" android:id="@+id/menuName"  android:layout_width="match_parent" android:layout_height="20dp"/>
-    <ImageView android:layout_rowWeight="2" android:id="@+id/menuImage" android:scaleType="fitCenter" android:layout_height="80dp" android:layout_width="match_parent" android:src="@drawable/psy_b"/>
-    <TextView android:text="5600원"  android:layout_rowWeight="1" android:textSize="21dp" android:id="@+id/menuPrice" android:layout_width="match_parent" android:layout_height="20dp" android:textAlignment="center"/>
-</GridLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width= "110dp"
+    android:orientation="vertical"
+    android:layout_height= "wrap_content"
+    android:background="@drawable/roundrect"
+    android:elevation="5dp"
+    android:layout_gravity="center"
+    android:id="@+id/menuRoot"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView android:text="싸이 버거 엄청나게 긴 이름이다." android:textAlignment="center" android:textSize="10dp" android:id="@+id/menuName"  android:layout_width="match_parent" android:layout_height="28dp"/>
+        <ImageView android:layout_below="@id/menuName" android:layout_centerVertical="true" android:id="@+id/menuImage" android:scaleType="fitCenter" android:layout_height="80dp" android:layout_width="match_parent"/>
+        <TextView android:layout_below="@id/menuImage" android:layout_marginTop="5dp" android:text="5600원"  android:layout_rowWeight="1" android:textSize="10dp" android:id="@+id/menuPrice" android:layout_width="match_parent" android:layout_height="20dp" android:textAlignment="center"/>
+    </RelativeLayout>
+
+</LinearLayout>

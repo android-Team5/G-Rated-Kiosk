@@ -31,24 +31,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     //메뉴판의 한 칸을 설정
-    private fun SetMenu(index:Int, menus:List<Menu>, views:List<View>){
+    private fun SetMenu(index:Int, menus:List<Menu>, menu:MenuView){
         if(menus.size<=index){
-            (views[0] as TextView).text = ""
-            (views[1] as ImageView).setImageDrawable(null)
-            (views[2] as TextView).text = ""
+            menu.ClearMenu()
             return
         }
 
-        (views[0] as TextView).text = menus[index].Name
-        (views[1] as ImageView).visibility = View.VISIBLE
-        (views[1] as ImageView).setImageDrawable(menus[index].MenuImage)
-        (views[2] as TextView).text = menus[index].Price.toString() + "원"
+        menu.SetMenu(menus[index].Name, menus[index].Price,menus[index].MenuImage)
         return
     }
 
     private fun SetAllMenus(menus:List<Menu>, grid:GridLayout){
         for ((i, l) in grid.children.toList().withIndex()){
-            SetMenu(i,menus,(l as LinearLayout).children.toList())
+            SetMenu(i,menus,(l as MenuView))
         }
     }
 
