@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:rowCount="3"
+    android:layout_width="150dp"
+    android:orientation="vertical"
+    android:layout_height="200dp">
+
+    <TextView android:text="싸이 버거" android:textAlignment="center" android:textSize="24dp" android:layout_rowWeight="1" android:id="@+id/menuName"  android:layout_width="match_parent" android:layout_height="20dp"/>
+    <ImageView android:layout_rowWeight="2" android:id="@+id/menuImage" android:scaleType="fitCenter" android:layout_height="80dp" android:layout_width="match_parent" android:src="@drawable/psy_b"/>
+    <TextView android:text="5600원"  android:layout_rowWeight="1" android:textSize="21dp" android:id="@+id/menuPrice" android:layout_width="match_parent" android:layout_height="20dp" android:textAlignment="center"/>
+</GridLayout>
