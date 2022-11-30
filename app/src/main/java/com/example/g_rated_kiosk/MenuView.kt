@@ -10,6 +10,7 @@ import android.view.MotionEvent
 import android.view.MotionEvent.*
 import android.view.View
 import android.widget.LinearLayout
+import com.example.g_rated_kiosk.Common.Companion.chosenMenu
 import com.example.g_rated_kiosk.databinding.MenuviewBinding
 
 
@@ -53,7 +54,8 @@ class MenuView
     override fun performClick(): Boolean {
         super.performClick()
         onClickEvent?.onClick(this)
-        Log.d("ttttttt","clicked")
+        Log.d("testtest",currentMenu!!.Name)
+         chosenMenu.menuName = currentMenu!!.Name
         return true
     }
 
