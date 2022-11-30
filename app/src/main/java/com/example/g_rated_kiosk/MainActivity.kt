@@ -1,16 +1,8 @@
 package com.example.g_rated_kiosk
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Debug
-import android.util.Log
-import android.view.View
-import android.widget.GridLayout
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.view.children
 import com.example.g_rated_kiosk.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +15,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.toMainButton.setOnClickListener {
             val intent = Intent(this, MenuSelect::class.java)
+            startActivity(intent)
+            finish()
+        }
+        binding.toTestButton.setOnClickListener {
+            val intent = Intent(this, DataManageTestPage::class.java)
             startActivity(intent)
             finish()
         }

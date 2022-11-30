@@ -3,12 +3,14 @@ package com.example.g_rated_kiosk
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.GridLayout
 import androidx.core.view.children
 import com.example.g_rated_kiosk.databinding.ActivityMenuSelectBinding
 
 class MenuSelect : AppCompatActivity() {
+
     var currentPage:Int = 1
     var maxPage:Int = 1
     var itemPerPage:Int = 12
@@ -120,6 +122,10 @@ class MenuSelect : AppCompatActivity() {
 
         binding.nextPageButton.setOnClickListener {
             ChangePage(currentPage+1)
+        }
+
+        for(t in binding.grid.children.toList()){
+            (t as MenuView).onClickEvent = View.OnClickListener { v -> Log.d("tt","clicked clicked clicked") }
         }
     }
 }
