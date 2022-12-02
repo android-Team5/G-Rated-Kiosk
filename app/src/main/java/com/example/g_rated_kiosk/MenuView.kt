@@ -55,7 +55,7 @@ class MenuView
         super.performClick()
         onClickEvent?.onClick(this)
         Log.d("testtest",currentMenu!!.Name)
-         chosenMenu.menuName = currentMenu!!.Name
+         chosenMenu.menu = currentMenu
         return true
     }
 

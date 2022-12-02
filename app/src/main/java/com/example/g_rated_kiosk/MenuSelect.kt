@@ -6,12 +6,16 @@ import android.os.Bundle
 import android.view.View
 import android.widget.GridLayout
 import androidx.core.view.children
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.g_rated_kiosk.Common.Companion.cartList
+import com.example.g_rated_kiosk.Common.Companion.initiateCartList
 import com.example.g_rated_kiosk.databinding.ActivityMenuSelectBinding
 
 class MenuSelect : AppCompatActivity() {
     var currentPage:Int = 1
     var maxPage:Int = 1
     var itemPerPage:Int = 12
+    var cartList = Common.cartList
     lateinit var currentType:MenuType
     lateinit var binding:ActivityMenuSelectBinding
 
@@ -94,7 +98,10 @@ class MenuSelect : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initiateCartList()
         binding = ActivityMenuSelectBinding.inflate(layoutInflater)
+        binding.recycle.layoutManager = LinearLayoutManager(this)
+        binding.recycle.adapter=CartAdapter(cartList = cartList)
         itemPerPage = binding.grid.rowCount * binding.grid.columnCount
 
         setContentView(binding.root)

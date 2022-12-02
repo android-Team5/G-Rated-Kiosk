@@ -11,7 +11,10 @@ import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.children
+import androidx.recyclerview.widget.RecyclerView
 import com.example.g_rated_kiosk.databinding.ActivityMainBinding
+import com.example.g_rated_kiosk.databinding.ItemBinding
+class MyViewHolder (val binding: ItemBinding):RecyclerView.ViewHolder(binding.root)
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
