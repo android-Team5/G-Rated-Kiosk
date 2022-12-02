@@ -30,5 +30,13 @@ class MenuController {
             }
         }
 
+        fun FindMenu(menu: List<Menu>, name:String):Menu?{
+            for(l in menu){
+                if(l.Name == name)
+                    return l
+            }
+            return null
+        }
+
     }
 }

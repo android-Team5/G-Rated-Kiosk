@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:columnCount="2"
             android:orientation="horizontal"
-            android:rowCount="4"
+            android:rowCount="3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,15 +99,15 @@
                 android:layout_columnWeight="1"
                 android:gravity="center" />
 
-            <com.example.g_rated_kiosk.MenuView
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:gravity="center" />
+<!--            <com.example.g_rated_kiosk.MenuView-->
+<!--                android:layout_rowWeight="1"-->
+<!--                android:layout_columnWeight="1"-->
+<!--                android:gravity="center" />-->
 
-            <com.example.g_rated_kiosk.MenuView
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:gravity="center" />
+<!--            <com.example.g_rated_kiosk.MenuView-->
+<!--                android:layout_rowWeight="1"-->
+<!--                android:layout_columnWeight="1"-->
+<!--                android:gravity="center" />-->
         </GridLayout>
 
         <LinearLayout
@@ -155,7 +155,11 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/grid"
             app:layout_constraintVertical_bias="1.0">
-
+            <androidx.recyclerview.widget.RecyclerView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/recycle"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
 
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
