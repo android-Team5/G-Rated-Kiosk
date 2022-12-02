@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "713550026930",
+    "project_id": "g-rated-kiosk-db",
+    "storage_bucket": "g-rated-kiosk-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713550026930:android:9a25c8e92cb0bfcb27d1ab",
+        "android_client_info": {
+          "package_name": "com.example.g_rated_kiosk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "713550026930-9vhht49ou5bek4t1qfh226j8evu13fnv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo1naiWzLvcuFo9at-zijieDYXBSE3v-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "713550026930-9vhht49ou5bek4t1qfh226j8evu13fnv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/equationDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
+        android:text = "결제 수단 선택"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textAlignment="center"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/voucher_payment"
+        android:layout_width="290dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center_horizontal"
+        app:cornerRadius="20dp"
+        android:backgroundTint="#F1B607"
+        android:drawableLeft="@drawable/gift_icon"
+        android:text="모바일 상품권"
+        android:textColor="@color/black"
+        android:textSize="30sp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/card_payment"
+        android:layout_width="290dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
+        app:cornerRadius="19dp"
+        android:backgroundTint="#F1B607"
+        android:drawableLeft="@drawable/card_icon"
+        android:text="카드"
+        android:textColor="@color/black"
+        android:textSize="30sp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_gravity="center_horizontal"
+        app:cornerRadius="19dp"
+        android:backgroundTint="#F4F4F2"
+        android:text="Back"
+        android:textColor="@color/black"
+        android:textSize="25sp"/>
+
+
+
+</LinearLayout>
