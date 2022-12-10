@@ -8,9 +8,9 @@ import android.util.Log
 import android.view.View
 import android.widget.GridLayout
 import androidx.core.view.children
-import com.example.g_rated_kiosk.Common.Companion.initiateCartList
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.g_rated_kiosk.Common.Companion.cartList
+import com.example.g_rated_kiosk.DataManage.StocksManager
 
 import com.example.g_rated_kiosk.databinding.ActivityMenuSelectBinding
 
@@ -59,6 +59,16 @@ class MenuSelect : AppCompatActivity() {
         MenuController.AddMenu(Menu(MenuType.SIDE,"케이준양념감자",1000,getDrawable(R.drawable.s_kpotato)))
         MenuController.AddMenu(Menu(MenuType.SIDE,"코울슬로",1500,getDrawable(R.drawable.s_kourslo)))
         MenuController.AddMenu(Menu(MenuType.SIDE,"콘샐러드",1500,getDrawable(R.drawable.s_cornsalad)))
+
+        for(t in MenuController.GetMenus(MenuType.BURGER)){
+            StocksManager.setStock(t,10)
+        }
+        for(t in MenuController.GetMenus(MenuType.DRINKS)){
+            StocksManager.setStock(t,10)
+        }
+        for(t in MenuController.GetMenus(MenuType.SIDE)){
+            StocksManager.setStock(t,10)
+        }
 
         MenuController.isLoaded = true
     }
@@ -130,6 +140,7 @@ class MenuSelect : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         binding = ActivityMenuSelectBinding.inflate(layoutInflater)
         binding.recycle.layoutManager = LinearLayoutManager(this)

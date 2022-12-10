@@ -30,10 +30,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        binding.toTestButton.setOnClickListener {
-            val intent = Intent(this, DataManageTestPage::class.java)
-            startActivity(intent)
-            finish()
-        }
     }
 }
