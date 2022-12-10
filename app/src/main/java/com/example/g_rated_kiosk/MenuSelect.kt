@@ -1,6 +1,7 @@
 package com.example.g_rated_kiosk
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,7 +9,7 @@ import android.widget.GridLayout
 import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.g_rated_kiosk.Common.Companion.cartList
-import com.example.g_rated_kiosk.Common.Companion.initiateCartList
+
 import com.example.g_rated_kiosk.databinding.ActivityMenuSelectBinding
 
 class MenuSelect : AppCompatActivity() {
@@ -55,6 +56,8 @@ class MenuSelect : AppCompatActivity() {
             menu.ClearMenu()
             return
         }
+
+        asdf(menu)
         menu.SetMenu(menus[index])
         return
     }
@@ -96,9 +99,25 @@ class MenuSelect : AppCompatActivity() {
         ChangePage(1)
     }
 
+    private fun asdf(t:MenuView){
+        t.onClickEvent = View.OnClickListener {
+            //(it.context as Activity).finish() //현재 액티비티 종료 실시
+            //(it.context as Activity).overridePendingTransition(0, 0) //효과 없애기
+            //(it.context as Activity).startActivity(intent) //현재 액티비티 재실행 실시
+            //(it.context as Activity).overridePendingTransition(0, 0) //효과 없애기
+            Common.chosenMenu.menu = (it as MenuView).currentMenu
+
+            Common.addToCart(Common.chosenMenu)
+            binding.recycle.adapter!!.notifyDataSetChanged()
+
+
+            Common.chosenMenu = cart()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initiateCartList()
+
         binding = ActivityMenuSelectBinding.inflate(layoutInflater)
         binding.recycle.layoutManager = LinearLayoutManager(this)
         binding.recycle.adapter=CartAdapter(cartList = cartList)
@@ -128,5 +147,7 @@ class MenuSelect : AppCompatActivity() {
         binding.nextPageButton.setOnClickListener {
             ChangePage(currentPage+1)
         }
+
+
     }
 }

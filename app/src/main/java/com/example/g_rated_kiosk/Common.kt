@@ -14,16 +14,7 @@ class cart {
 }
 public class Common{
     companion object{
-        fun initiateCartList(){
-            val newCart = cart()
-            newCart.count =1
-            newCart.noOnion=false
-            newCart.noPickle=true
 
-            newCart.menu=MenuController.FindMenu(MenuController.GetMenus(MenuType.BURGER),"싸이버거")
-            cartList.add(newCart)
-
-        }
 
         fun clearChosen(){
             chosenMenu.menu= null;
@@ -35,25 +26,26 @@ public class Common{
             chosenMenu.count=0
         }
         var cartList = mutableListOf<cart>()
-        lateinit var chosenMenu:cart
-
-        fun addToCart(){
+        var chosenMenu:cart = cart()
+        var clearCart = cart()
+        fun addToCart(cm:cart){
+            var check = 0
             for (cart:cart in cartList) {
-                if(cart.menu?.Name== chosenMenu.menu?.Name
-                    && cart.side == chosenMenu.side
-                    && cart.drink == chosenMenu.drink
-                    && cart.noOnion == chosenMenu.noOnion
-                    && cart.noPickle == chosenMenu.noPickle){
+                if(cart.menu?.Name== cm.menu?.Name
+                    && cart.side == cm.side
+                    && cart.drink == cm.drink
+                    && cart.noOnion == cm.noOnion
+                    && cart.noPickle == cm.noPickle){
                     cart.count +=1
-                }
-                else {
-                    break;
+                    check=1
+                    break
                 }
             }
-            var temp = chosenMenu
-            temp.count=1
-            cartList.add(temp)
-            clearChosen()
+            if(check==0) {
+               cm.count=1
+                cartList.add(cm)
+            }
+            chosenMenu = clearCart
         }
 
     }

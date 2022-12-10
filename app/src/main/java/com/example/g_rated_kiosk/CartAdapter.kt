@@ -19,7 +19,8 @@ class CartAdapter (val cartList: MutableList<cart>): RecyclerView.Adapter<Recycl
     // onCreateViewHolder()에서 반환한 뷰 홀더 객체는 자동으로 onBindViewHolder()의 매개변수로 전달
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding = (holder as MyViewHolder).binding
-        binding.itemMenuName.text= cartList[position].menu?.Name
+
+        binding.itemMenuName.text= cartList[position].menu?.Name + cartList[position].count.toString()
 
         binding.itemRoot.setOnClickListener { // 뷰에 이벤트 추가
         }
