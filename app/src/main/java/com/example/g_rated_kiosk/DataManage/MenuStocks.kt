@@ -29,7 +29,6 @@ class MenuStocks {
                 stock.Price = newStock.Price
                 stock.Stock = newStock.Stock
             }
-
         }
 
 

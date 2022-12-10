@@ -4,6 +4,8 @@ import android.util.Log
 import com.example.g_rated_kiosk.DBManager
 import com.example.g_rated_kiosk.Menu
 import com.example.g_rated_kiosk.cart
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.Date
@@ -39,42 +41,32 @@ class StocksManager {
             DBManager.addIncomingStock(gotMenu.Name,quantity,gotMenu.Price)
         }
 
-        fun initiateStocks(){
-            DBManager.database.collection("stocks").document("currentStock").collection("products").addSnapshotListener { value, e ->
+        fun initiateStocks():Task<QuerySnapshot>{
+            Log.d("database Initiation","updating stocks...")
+
+            DBManager.database.collection("stock").document("currentStock").collection("products").addSnapshotListener { value, e ->
                 if (e != null) {
                     Log.w("TAG", "Listen failed.", e)
                     return@addSnapshotListener
                 }
+                Log.d("database Initiation","updating stocks...")
 
                 val stockChanges = mutableListOf<MenuStock>()
 
                 for (doc in value!!) {
-                    doc.getString("name")?.let {
-                        stockChanges.add(MenuStock(doc.id,doc.data["price"] as Int, doc.data["stock"] as Int))
-                    }
+                    stockChanges.add(MenuStock(doc.id,(doc.data["price"] as Long).toInt(), (doc.data["stock"] as Long).toInt()))
+                    Log.d("data From Database Update",doc.data.values.toString())
                 }
 
                 for(s in stockChanges){
                     MenuStocks.update(s)
                 }
             }
-
+            return getAllStocks()
         }
 
-        fun getAllStocks():List<MenuStock>{
-            val list = mutableListOf<MenuStock>()
-            Firebase.firestore.collection("stock").document("currentStock").collection("products").get()
-                .addOnSuccessListener { documents ->
-                    for(s in documents){
-                        list.add(MenuStock(s.id, s.data["price"] as Int, s.data["stock"] as Int))
-                    }
-                }
-
-                .addOnFailureListener { exception ->
-                    Log.e("Database Load Failed",exception.stackTraceToString())
-                }
-
-            return list
+        fun getAllStocks(): Task<QuerySnapshot> {
+            return Firebase.firestore.collection("stock").document("currentStock").collection("products").get()
         }
 
 

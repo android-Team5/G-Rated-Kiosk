@@ -10,6 +10,8 @@ import android.widget.GridLayout
 import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.g_rated_kiosk.Common.Companion.cartList
+import com.example.g_rated_kiosk.DataManage.MenuStock
+import com.example.g_rated_kiosk.DataManage.MenuStocks
 import com.example.g_rated_kiosk.DataManage.StocksManager
 
 import com.example.g_rated_kiosk.databinding.ActivityMenuSelectBinding
@@ -62,9 +64,29 @@ class MenuSelect : AppCompatActivity() {
         MenuController.AddMenu(Menu(MenuType.SIDE,"코울슬로",1500,getDrawable(R.drawable.s_kourslo)))
         MenuController.AddMenu(Menu(MenuType.SIDE,"콘샐러드",1500,getDrawable(R.drawable.s_cornsalad)))
 
-        StocksManager.initiateStocks()
+        val list = mutableListOf<MenuStock>()
+        StocksManager.initiateStocks().addOnSuccessListener { documents ->
+            Log.d("database Initiation","database load success...")
+            for(s in documents){
+                list.add(MenuStock(s.id, (s.data["price"] as Long).toInt(), (s.data["stock"] as Long).toInt()))
+            }
+            for (t in list){
+                Log.d("data From Database Update",String.format("name : ${t.Name}, stock : ${t.Stock}"))
+                MenuStocks.update(t)
+            }
+            UpdateAllMenus()
+        }
+            .addOnFailureListener { exception ->
+                Log.e("Database Load Failed",exception.stackTraceToString())
+            }
 
         MenuController.isLoaded = true
+    }
+
+    fun UpdateAllMenus(){
+        for(item in binding.grid.children.toList()){
+            (item as MenuView).UpdateStock()
+        }
     }
 
     //메뉴판의 한 칸을 설정

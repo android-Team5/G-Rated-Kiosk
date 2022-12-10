@@ -23,7 +23,7 @@ class MenuView
     (context: Context?, attr: AttributeSet) : LinearLayout(context!!, attr) {
 
     companion object{
-        val quantityThreshold:Int = 10 // 메뉴를 판매개시할 수 있는 최소 수량. 재고가 이 수치 이하일 경우 품절처리
+        val quantityThreshold:Int = 5 // 메뉴를 판매개시할 수 있는 최소 수량. 재고가 이 수치 이하일 경우 품절처리
     }
 
     var view: MenuviewBinding
@@ -65,7 +65,7 @@ class MenuView
     }
 
     private fun SetMenuPrice(price: Int) {
-        view.menuPrice.text = price.toString() + "원"
+        view.menuPrice.text = price.toString() + "원" + String.format("(${MenuStocks.find(currentMenu?.Name?:"")?.Stock?:0})")
     }
 
     fun ClearMenu() {
