@@ -8,11 +8,13 @@ import android.util.Log
 import android.view.View
 import android.widget.GridLayout
 import androidx.core.view.children
-import com.example.g_rated_kiosk.Common.Companion.initiateCartList
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.g_rated_kiosk.Common.Companion.cartList
+import com.example.g_rated_kiosk.DataManage.StocksManager
 
 import com.example.g_rated_kiosk.databinding.ActivityMenuSelectBinding
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class MenuSelect : AppCompatActivity() {
 
@@ -59,6 +61,8 @@ class MenuSelect : AppCompatActivity() {
         MenuController.AddMenu(Menu(MenuType.SIDE,"케이준양념감자",1000,getDrawable(R.drawable.s_kpotato)))
         MenuController.AddMenu(Menu(MenuType.SIDE,"코울슬로",1500,getDrawable(R.drawable.s_kourslo)))
         MenuController.AddMenu(Menu(MenuType.SIDE,"콘샐러드",1500,getDrawable(R.drawable.s_cornsalad)))
+
+        StocksManager.initiateStocks()
 
         MenuController.isLoaded = true
     }
@@ -114,10 +118,6 @@ class MenuSelect : AppCompatActivity() {
 
     private fun asdf(t:MenuView){
         t.onClickEvent = View.OnClickListener {
-            //(it.context as Activity).finish() //현재 액티비티 종료 실시
-            //(it.context as Activity).overridePendingTransition(0, 0) //효과 없애기
-            //(it.context as Activity).startActivity(intent) //현재 액티비티 재실행 실시
-            //(it.context as Activity).overridePendingTransition(0, 0) //효과 없애기
             Common.chosenMenu.menu = (it as MenuView).currentMenu
 
             Common.addToCart(Common.chosenMenu)
