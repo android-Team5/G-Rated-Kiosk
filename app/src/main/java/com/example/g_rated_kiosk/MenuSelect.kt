@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.GridLayout
 import androidx.core.view.children
@@ -13,6 +14,7 @@ import com.example.g_rated_kiosk.Common.Companion.cartList
 import com.example.g_rated_kiosk.databinding.ActivityMenuSelectBinding
 
 class MenuSelect : AppCompatActivity() {
+
     var currentPage:Int = 1
     var maxPage:Int = 1
     var itemPerPage:Int = 12
@@ -119,8 +121,6 @@ class MenuSelect : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMenuSelectBinding.inflate(layoutInflater)
-        binding.recycle.layoutManager = LinearLayoutManager(this)
-        binding.recycle.adapter=CartAdapter(cartList = cartList)
         itemPerPage = binding.grid.rowCount * binding.grid.columnCount
 
         setContentView(binding.root)
