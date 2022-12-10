@@ -8,7 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.GridLayout
 import androidx.core.view.children
-import com.example.g_rated_kiosk.Common.Companion.initiateCartList
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.g_rated_kiosk.Common.Companion.cartList
 
