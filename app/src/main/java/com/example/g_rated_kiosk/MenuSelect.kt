@@ -121,6 +121,9 @@ class MenuSelect : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMenuSelectBinding.inflate(layoutInflater)
+        binding.recycle.layoutManager = LinearLayoutManager(this)
+        binding.recycle.adapter=CartAdapter(cartList = cartList)
+
         itemPerPage = binding.grid.rowCount * binding.grid.columnCount
 
         setContentView(binding.root)
