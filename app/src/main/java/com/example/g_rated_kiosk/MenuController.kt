@@ -4,6 +4,8 @@ import android.view.View
 
 class MenuController {
     companion object{
+        var isLoaded = false
+
         private val BurgerMenus = mutableListOf<Menu>()
         private val SideMenus = mutableListOf<Menu>()
         private val DrinkMenus = mutableListOf<Menu>()
@@ -36,6 +38,12 @@ class MenuController {
                     return l
             }
             return null
+        }
+
+        fun InitiateMenus(){
+            if(isLoaded)
+                return
+
         }
 
     }

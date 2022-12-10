@@ -2,8 +2,6 @@ package com.example.g_rated_kiosk
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.g_rated_kiosk.DataManage.FileManager
-import com.example.g_rated_kiosk.DataManage.LocalStorageManager
 import com.example.g_rated_kiosk.DataManage.MenuStock
 import com.example.g_rated_kiosk.DataManage.MenuStocks
 import com.example.g_rated_kiosk.databinding.ActivityDataManageTestPageBinding
@@ -18,12 +16,10 @@ class DataManageTestPage : AppCompatActivity() {
     }
 
     fun saveJSON(){
-        FileManager.write(MenuStocks.toJson(),this)
     }
 
     fun loadJSON(){
         MenuStocks.stockList.clear()
-        MenuStocks.getFromJson(FileManager.read(this))
         update()
     }
 

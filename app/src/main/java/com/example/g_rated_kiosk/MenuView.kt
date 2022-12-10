@@ -11,15 +11,43 @@ import android.view.MotionEvent.*
 import android.view.View
 import android.widget.LinearLayout
 import com.example.g_rated_kiosk.Common.Companion.chosenMenu
+import com.example.g_rated_kiosk.DataManage.MenuStocks
 import com.example.g_rated_kiosk.databinding.MenuviewBinding
 
 
 class MenuView
     (context: Context?, attr: AttributeSet) : LinearLayout(context!!, attr) {
 
+    companion object{
+        val quantityThreshold:Int = 10 // 메뉴를 판매개시할 수 있는 최소 수량. 재고가 이 수치 이하일 경우 품절처리
+    }
+
     var view: MenuviewBinding
     var onClickEvent:OnClickListener? = null
     var currentMenu:Menu? = null
+    var isSoldOut = false
+
+    fun UpdateStock(){
+        isSoldOut = true
+        currentMenu?.let{
+            val stock = MenuStocks.find(it.Name)
+            if((stock?.Stock ?: 0) <= quantityThreshold){
+                isSoldOut = false
+            }
+        }
+    }
+
+    private fun SetSoldOut(value: Boolean){
+        isSoldOut = value
+        if(value){
+            view.menuPrice.text = "품절"
+            view.menuPrice.setTextColor(Color.RED)
+        }
+        else{
+            view.menuPrice.text = currentMenu!!.Price.toString() + "원"
+            view.menuPrice.setTextColor(R.color.black)
+        }
+    }
 
     private fun SetMenuImage(img: Drawable?) {
         view.menuImage.setImageDrawable(img)
@@ -49,6 +77,7 @@ class MenuView
         currentMenu = menu
         view.menuRoot.elevation = 5.0f;
         isEnabled = true
+        UpdateStock()
     }
 
     override fun performClick(): Boolean {
@@ -60,7 +89,7 @@ class MenuView
     }
 
     fun onClick(v:View, e:MotionEvent):Boolean{
-        if(!isEnabled || currentMenu == null)
+        if(!isEnabled || isSoldOut || currentMenu == null)
             return false
         when (e.action) {
             ACTION_DOWN -> {
