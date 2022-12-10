@@ -3,6 +3,7 @@ package com.example.g_rated_kiosk
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.GridLayout
 import androidx.core.view.children
