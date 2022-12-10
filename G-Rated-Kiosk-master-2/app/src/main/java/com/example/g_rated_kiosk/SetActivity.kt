@@ -12,15 +12,16 @@ class SetActivity : AppCompatActivity() {
 
         setContentView(/* layoutResID = */ R.layout.set)
 
-//        imageButton1.setOnClickListener {
+//        burgerBtn.setOnClickListener {
 //                image1.visibility = View.VISIBLE
 //        }
-       // burgerBtn.setImageDrawable(Common.chosenMenu.menu!!.MenuImage)
+
+        burgerBtn.setImageDrawable(Common.chosenMenu.menu?.MenuImage)
        // burgerText.text = Common.chosenMenu.menu!!.Name
 
         friesBtn.setOnClickListener {
             // Common.chosenMenu.side = null
-          //  Common.chosenMenu.side = MenuController.FindMenu(MenuController.GetMenus(MenuType.SIDE),"치즈볼")
+            Common.chosenMenu.side = MenuController.FindMenu(MenuController.GetMenus(MenuType.SIDE),"치즈볼")
             image2.visibility = View.VISIBLE
         }
         cheesefriesBtn.setOnClickListener {
@@ -49,8 +50,8 @@ class SetActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        backButton.setOnClickListener{
-            val intent = Intent(this, SetSingle::class.java)
+        nextButton.setOnClickListener{
+            val intent = Intent(this, SingleActivity::class.java)
             startActivity(intent)
             finish()
         }

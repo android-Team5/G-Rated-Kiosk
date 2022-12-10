@@ -131,7 +131,6 @@ class MenuSelect : AppCompatActivity() {
 
         for ( t in binding.grid.children.toList()){
             (t as MenuView).onClickEvent = View.OnClickListener {
-                Common.chosenMenu.menu = (it as MenuView).currentMenu
                 val intent = Intent(this, SetSingle::class.java)
                 startActivity(intent)
                 finish()

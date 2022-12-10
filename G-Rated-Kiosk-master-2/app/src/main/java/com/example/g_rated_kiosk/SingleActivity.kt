@@ -5,75 +5,77 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.single.*
 
-var count1 = 1
-var count2 = 1
-var count3 = 1
+
 class SingleActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(/* layoutResID = */ R.layout.single)
 
+        var lettuceCnt = 1
+        var onionCnt = 1
+        var pickleCnt = 1
+
         add1.setOnClickListener {
-            if(count1 == 1) {
+            if(lettuceCnt == 1) {
                 extraPrice1.text = "+ 400원"
-                count1 ++
+                lettuceCnt ++
             }
-            else if(count1 == 2)
+            else if(lettuceCnt == 2)
             {
                 extraPrice1.text = "+ 800원"
-                count1 ++
+                lettuceCnt ++
             }
-            else if(count1 == 3)
+            else if(lettuceCnt == 3)
             {
                 extraPrice1.text = "+ 1200원"
-                count1 ++
+                lettuceCnt ++
             }
         }
 
         add2.setOnClickListener {
-            if(count2 == 1) {
+            if(onionCnt == 1) {
                 extraPrice2.text = "+ 400원"
-                count2 ++
+                onionCnt ++
             }
-            else if(count2 == 2)
+            else if(onionCnt == 2)
             {
                 extraPrice2.text = "+ 800원"
-                count2 ++
+                onionCnt ++
             }
-            else if(count2 == 3)
+            else if(onionCnt == 3)
             {
                 extraPrice2.text = "+ 1200원"
-                count2 ++
+                onionCnt ++
             }
         }
 
         add3.setOnClickListener {
-            if(count3 == 1) {
+            if(pickleCnt == 1) {
                 extraPrice3.text = "+ 400원"
-                count3 ++
+                pickleCnt ++
             }
-            else if(count3 == 2)
+            else if(pickleCnt == 2)
             {
                 extraPrice3.text = "+ 800원"
-                count3 ++
+                pickleCnt ++
             }
-            else if(count3 == 3)
+            else if(pickleCnt == 3)
             {
                 extraPrice3.text = "+ 1200원"
-                count3 ++
+                pickleCnt ++
             }
         }
 
         del1.setOnClickListener {
-            count1 -= 1
-            if(count1 == 1) {
+            lettuceCnt -= 1
+            if(lettuceCnt == 1) {
                 extraPrice1.text = "+ 400원"
             }
-            else if(count1 == 2)
+            else if(lettuceCnt == 2)
             {
                 extraPrice1.text = "+ 800원"
             }
-            else if(count1 == 0)
+            else if(lettuceCnt == 0)
             {
                 extraPrice1.text = "+ 0원"
             }
@@ -81,17 +83,17 @@ class SingleActivity: AppCompatActivity() {
 
 
         del2.setOnClickListener {
-            count2 -= 1
+            onionCnt -= 1
 
-            if(count2 == 1) {
+            if(onionCnt == 1) {
                 extraPrice2.text = "+ 400원"
 
             }
-            else if(count2 == 2)
+            else if(onionCnt == 2)
             {
                 extraPrice2.text = "+ 800원"
             }
-            else if(count2 == 0)
+            else if(onionCnt == 0)
             {
                 extraPrice2.text = "+ 0원"
             }
@@ -100,15 +102,15 @@ class SingleActivity: AppCompatActivity() {
 
 
         del3.setOnClickListener {
-            count3 -= 1
-            if(count3 == 1) {
+            pickleCnt -= 1
+            if(pickleCnt == 1) {
                 extraPrice3.text = "+ 400원"
             }
-            else if(count3 == 2)
+            else if(pickleCnt == 2)
             {
                 extraPrice3.text = "+ 800원"
             }
-            else if(count3 == 0)
+            else if(pickleCnt == 0)
             {
                 extraPrice3.text = "+ 0원"
             }
