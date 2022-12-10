@@ -113,7 +113,7 @@ class MenuSelect : AppCompatActivity() {
         MenuView.onPerformClickEvent = View.OnClickListener {
 
             Common.chosenMenu.menu = (it as MenuView).currentMenu
-
+            binding.recycle.scrollToPosition(cartList.size)
             Common.addToCart(Common.chosenMenu)
             binding.recycle.adapter!!.notifyDataSetChanged()
 
