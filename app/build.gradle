@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.g_rated_kiosk"
-        minSdk 21
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -57,6 +57,8 @@ dependencies {
     // When using the BoM, don't specify versions in Firebase dependencies
     //implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-database-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
 
 
 }

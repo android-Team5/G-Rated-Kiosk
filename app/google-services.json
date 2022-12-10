@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "713550026930",
+    "firebase_url": "https://g-rated-kiosk-db-default-rtdb.firebaseio.com",
     "project_id": "g-rated-kiosk-db",
     "storage_bucket": "g-rated-kiosk-db.appspot.com"
   },
