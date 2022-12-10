@@ -1,6 +1,8 @@
 package com.example.g_rated_kiosk
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
@@ -10,6 +12,8 @@ import android.view.MotionEvent
 import android.view.MotionEvent.*
 import android.view.View
 import android.widget.LinearLayout
+import com.example.g_rated_kiosk.Common.Companion.addToCart
+import com.example.g_rated_kiosk.Common.Companion.cartList
 import com.example.g_rated_kiosk.Common.Companion.chosenMenu
 import com.example.g_rated_kiosk.DataManage.MenuStocks
 import com.example.g_rated_kiosk.databinding.MenuviewBinding
@@ -81,10 +85,13 @@ class MenuView
     }
 
     override fun performClick(): Boolean {
+        val intent = (context as Activity).intent
+        //intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION);
         super.performClick()
+
+
         onClickEvent?.onClick(this)
-        Log.d("testtest",currentMenu!!.Name)
-         chosenMenu.menu = currentMenu
+
         return true
     }
 
