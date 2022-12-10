@@ -32,17 +32,11 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.cardPayment.setOnClickListener{
-            val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-            val currentDate = LocalDateTime.now().format(dateFormatter)
-            val timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss")
-            val currentTime = LocalDateTime.now().format(timeFormatter)
 
             updateSales(
                 productName = "쉬림프 싸이 플렉스버거",
                 quantity = 5,
                 price = 9900,
-                date = currentDate,
-                time = currentTime
 
             )
 
@@ -50,8 +44,6 @@ class MainActivity : AppCompatActivity() {
                 productName = "쉬림프 싸이 플렉스버거",
                 quantity = 5,
                 price = 9900,
-                date = currentDate,
-                time = currentTime
 
             )
 
@@ -59,8 +51,6 @@ class MainActivity : AppCompatActivity() {
                 productName = "치즈볼",
                 quantity = 20,
                 price = 2000,
-                date = currentDate,
-                time = currentTime
 
             )
 
@@ -68,8 +58,6 @@ class MainActivity : AppCompatActivity() {
                 productName = "쉬림프 싸이 플렉스버거",
                 quantity = 30,
                 price = 9900,
-                date = currentDate,
-                time = currentTime
 
             )
             Log.d("CurrentStock", "added current stock")
