@@ -10,10 +10,10 @@ fun addIncomingStock(productName: String, quantity:Int, price: Int, date: String
 
     val incomingStockRef = database
         .collection("stock").document("incomingStock")
-        .collection("$date").document("$productName")
+        .collection("$date").document("$time")
 
     val stockData = hashMapOf(
-        "orderTime" to "$time",
+        "productName" to "$productName",
         "price" to "$price",
         "quantity" to "$quantity"
 
@@ -28,12 +28,11 @@ fun addCurrentStock(productName: String, quantity:Int, price: Int, date: String,
 
     val currentStockRef = database
         .collection("stock").document("currentStock")
-        .collection("$date").document("$productName")
+        .collection("products").document("$productName")
 
     val stockData = hashMapOf(
-        "updateTime" to "$time",
         "price" to "$price",
-        "stockQuantity" to "$quantity"
+        "stock" to "$quantity"
 
     )
 
@@ -46,10 +45,11 @@ fun updateSales(productName: String, quantity:Int, price: Int, date: String, tim
 
     val soldProductRef = database
         .collection("stock").document("sales")
-        .collection("$date").document("$productName")
+        .collection("$date").document("$time")
+
 
     val salesData = hashMapOf(
-        "time" to "$time",
+        "productName" to "$productName",
         "price" to "$price",
         "quantitySold" to "$quantity"
 

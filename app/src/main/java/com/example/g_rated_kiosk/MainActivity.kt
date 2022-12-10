@@ -34,10 +34,19 @@ class MainActivity : AppCompatActivity() {
         binding.cardPayment.setOnClickListener{
             val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             val currentDate = LocalDateTime.now().format(dateFormatter)
-            val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
+            val timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss")
             val currentTime = LocalDateTime.now().format(timeFormatter)
 
             updateSales(
+                productName = "쉬림프 싸이 플렉스버거",
+                quantity = 5,
+                price = 9900,
+                date = currentDate,
+                time = currentTime
+
+            )
+
+            addCurrentStock(
                 productName = "쉬림프 싸이 플렉스버거",
                 quantity = 5,
                 price = 9900,
