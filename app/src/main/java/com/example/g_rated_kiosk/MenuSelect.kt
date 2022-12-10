@@ -1,10 +1,8 @@
 package com.example.g_rated_kiosk
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.GridLayout
 import androidx.core.view.children
@@ -96,7 +94,7 @@ class MenuSelect : AppCompatActivity() {
             return
         }
 
-        asdf(menu)
+        addCartAndRefresh(menu)
         menu.SetMenu(menus[index])
         return
     }
@@ -138,10 +136,11 @@ class MenuSelect : AppCompatActivity() {
         ChangePage(1)
     }
 
-    private fun asdf(t:MenuView){
-        t.onClickEvent = View.OnClickListener {
-            Common.chosenMenu.menu = (it as MenuView).currentMenu
+    private fun addCartAndRefresh(MenuView:MenuView){
+        MenuView.onPerformClickEvent = View.OnClickListener {
 
+            Common.chosenMenu.menu = (it as MenuView).currentMenu
+            binding.recycle.scrollToPosition(cartList.size)
             Common.addToCart(Common.chosenMenu)
             binding.recycle.adapter!!.notifyDataSetChanged()
 
