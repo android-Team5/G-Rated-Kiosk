@@ -32,7 +32,10 @@ class MenuView
         currentMenu?.let{
             val stock = MenuStocks.find(it.Name)
             if((stock?.Stock ?: 0) <= quantityThreshold){
-                isSoldOut = false
+                SetSoldOut(true)
+            }
+            else{
+                SetSoldOut(false)
             }
         }
     }
@@ -44,8 +47,8 @@ class MenuView
             view.menuPrice.setTextColor(Color.RED)
         }
         else{
-            view.menuPrice.text = currentMenu!!.Price.toString() + "원"
-            view.menuPrice.setTextColor(R.color.black)
+            view.menuPrice.text = currentMenu!!.Price.toString() + "원" + String.format("(${MenuStocks.find(currentMenu!!.Name)?.Stock?:0})")
+            view.menuPrice.setTextColor(Color.BLACK)
         }
     }
 

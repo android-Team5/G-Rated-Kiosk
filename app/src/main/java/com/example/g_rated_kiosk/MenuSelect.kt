@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.GridLayout
 import androidx.core.view.children
-
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.g_rated_kiosk.Common.Companion.cartList
+import com.example.g_rated_kiosk.DataManage.StocksManager
 
 import com.example.g_rated_kiosk.databinding.ActivityMenuSelectBinding
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class MenuSelect : AppCompatActivity() {
 
@@ -56,6 +59,8 @@ class MenuSelect : AppCompatActivity() {
         MenuController.AddMenu(Menu(MenuType.SIDE,"케이준양념감자",1000,getDrawable(R.drawable.s_kpotato)))
         MenuController.AddMenu(Menu(MenuType.SIDE,"코울슬로",1500,getDrawable(R.drawable.s_kourslo)))
         MenuController.AddMenu(Menu(MenuType.SIDE,"콘샐러드",1500,getDrawable(R.drawable.s_cornsalad)))
+
+        StocksManager.initiateStocks()
 
         MenuController.isLoaded = true
     }
