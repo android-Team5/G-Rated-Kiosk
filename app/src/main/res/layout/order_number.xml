@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text = "주문번호를 화긴하고\n 호출될때가지 기다리십시오 "
+        android:text = "주문번호를 확인하고\n 호출될때가지 기다리십시오 "
         android:textColor="@color/black"
         android:textAlignment="center"
         android:textSize="30sp"/>

@@ -1,9 +1,7 @@
 package com.example.g_rated_kiosk.DataManage
 
 import android.util.Log
-import com.example.g_rated_kiosk.DBManager
-import com.example.g_rated_kiosk.Menu
-import com.example.g_rated_kiosk.cart
+import com.example.g_rated_kiosk.*
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
@@ -18,23 +16,24 @@ class StocksManager {
          var today:String = ""
 
         fun sellStock(soldItems:List<cart>){
+            var cnt = 0
             for(i in soldItems){
                 i.menu?.let{
-                    sellStock(it,i.count)
+                    sellStock(it,i.count,cnt++)
                 }
 
                 i.side?.let {
-                    sellStock(it,i.count)
+                    sellStock(it,i.count,cnt++)
                 }
 
                 i.drink?.let {
-                    sellStock(it,i.count)
+                    sellStock(it,i.count,cnt++)
                 }
             }
         }
 
-        fun sellStock(soldMenu: Menu, quantity:Int){
-            DBManager.updateSales(soldMenu.Name,quantity,soldMenu.Price)
+        fun sellStock(soldMenu: Menu, quantity:Int, suffix:Int = 0){
+            DBManager.updateSales(soldMenu.Name,quantity,soldMenu.Price,suffix)
         }
 
         fun receptStock(gotMenu: Menu, quantity:Int){
@@ -63,6 +62,21 @@ class StocksManager {
                 }
             }
             return getAllStocks()
+        }
+
+        fun setAllStocks(){
+            for(t in MenuController.GetMenus(MenuType.BURGER)) {
+                DBManager.database.collection("stock").document("currentStock")
+                    .collection("products").document(t.Name).update("price",t.Price)
+            }
+            for(t in MenuController.GetMenus(MenuType.SIDE)) {
+                DBManager.database.collection("stock").document("currentStock")
+                    .collection("products").document(t.Name).update("price",t.Price)
+            }
+            for(t in MenuController.GetMenus(MenuType.DRINKS)) {
+                DBManager.database.collection("stock").document("currentStock")
+                    .collection("products").document(t.Name).update("price",t.Price)
+            }
         }
 
         fun getAllStocks(): Task<QuerySnapshot> {

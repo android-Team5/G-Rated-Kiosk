@@ -22,8 +22,8 @@ class SetActivity : AppCompatActivity() {
 //                image1.visibility = View.VISIBLE
 //        }
 
-       // burgerBtn.setImageDrawable(Common.chosenMenu.menu?.MenuImage)
-       // burgerText.text = Common.chosenMenu.menu!!.Name
+        burgerBtn.setImageDrawable(Common.chosenMenu.menu?.MenuImage)
+        burgerText.text = Common.chosenMenu.menu!!.Name
 
         friesBtn.setOnClickListener {
 

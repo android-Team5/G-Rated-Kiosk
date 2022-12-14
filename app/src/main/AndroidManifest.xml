@@ -49,6 +49,9 @@
             android:name=".PaymentSelection"
             android:exported="true" />
         <activity
+            android:name=".PurchaseEndActivity"
+            android:exported="true" />
+        <activity
             android:name=".SetSingle"
             android:exported="true" >
         </activity>

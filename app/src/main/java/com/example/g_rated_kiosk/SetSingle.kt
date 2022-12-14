@@ -33,5 +33,11 @@ class SetSingle : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        BtnBack.setOnClickListener {
+            val intent = Intent(this, MenuSelect::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

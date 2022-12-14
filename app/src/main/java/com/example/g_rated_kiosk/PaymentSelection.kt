@@ -4,6 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.example.g_rated_kiosk.databinding.CardPaymentBinding
+import com.example.g_rated_kiosk.databinding.GiftCardPaymentBinding
+import com.example.g_rated_kiosk.databinding.OrderNumberBinding
 import com.example.g_rated_kiosk.databinding.PaymentMethodBinding
 
 class PaymentSelection : AppCompatActivity() {
@@ -25,8 +28,22 @@ class PaymentSelection : AppCompatActivity() {
         }
 
 
+        binding.voucherPayment.setOnClickListener {
+            val binding2 = GiftCardPaymentBinding.inflate(layoutInflater)
+            setContentView(binding2.root)
+            binding2.purchaseCompleteButtton.setOnClickListener{
+                startActivity(Intent(this,PurchaseEndActivity::class.java))
+                finish()
+            }
+        }
+
         binding.cardPayment.setOnClickListener{
-            Log.d("CurrentStock", "added current stock")
+            val binding2 = CardPaymentBinding.inflate(layoutInflater)
+            setContentView(binding2.root)
+            binding2.purchaseCompleteButtton.setOnClickListener{
+                startActivity(Intent(this,PurchaseEndActivity::class.java))
+                finish()
+            }
         }
     }
 
