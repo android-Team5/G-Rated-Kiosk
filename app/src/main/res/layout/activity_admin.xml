@@ -12,6 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp">
             <Button
+                android:id="@+id/stockStatusButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -19,6 +20,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="재고 현황"/>
             <Button
+                android:id="@+id/dailyButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -26,6 +28,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="당일\n판매 현황"/>
             <Button
+                android:id="@+id/monthlyButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

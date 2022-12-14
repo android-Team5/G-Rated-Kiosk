@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.g_rated_kiosk.DataManage.MenuStock
@@ -22,10 +23,13 @@ import com.example.g_rated_kiosk.databinding.AdminitemBinding
 import com.example.g_rated_kiosk.databinding.ItemBinding
 import kotlinx.android.synthetic.main.adminitem.view.*
 import kotlinx.android.synthetic.main.dialog_addstock.view.*
+import java.time.LocalDateTime
 
 class MyAdminViewHolder (val binding: AdminitemBinding):RecyclerView.ViewHolder(binding.root)
 
 class StockItemsAdapter (val stockList: MutableList<MenuStock>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 /* inflate(int resource, ViewGroup parent, boolean attachToRoot)
 * - attachToRoot= false: parent is only used to create the correct subclass of LayoutParams
@@ -176,18 +180,118 @@ class StockItemsAdapter (val stockList: MutableList<MenuStock>): RecyclerView.Ad
 }
 
 class AdminActivity : AppCompatActivity() {
+    companion object{
+        var initedDaily = false
+        var initedMonthly = false
+        val dailySales = mutableListOf<StocksManager.SalesData>()
+        val monthlySales = mutableListOf<StocksManager.SalesData>()
+
+        fun findDaily(name:String):StocksManager.SalesData?{
+            for(t in dailySales){
+                if (t.name == name)
+                    return t
+            }
+            return null
+        }
+        fun findMonthly(name:String):StocksManager.SalesData?{
+            for(t in monthlySales){
+                if (t.name == name)
+                    return t
+            }
+            return null
+        }
+
+        fun updateToday(){
+
+            val currentDate = LocalDateTime.now().format(DBManager.dateFormatter)
+            dailySales.clear()
+
+           DBManager.database
+                .collection("stock").document("sales").collection("$currentDate").get().addOnSuccessListener {
+                    for(t in it.documents){
+                        val name = t["productName"].toString()
+                        val k = findDaily(name)
+                        if(k!=null){
+                            k.quantity += t["quantitySold"].toString().toInt()
+                        }
+                        else{
+                            dailySales.add(StocksManager.SalesData(t["productName"].toString(),
+                            t["price"].toString().toInt(),t["quantitySold"].toString().toInt()))
+                        }
+                    }
+                }
+            initedDaily = true
+        }
+
+        fun addDay(datePrefix:String,dateSuffix:String){
+            monthlySales.clear()
+            DBManager.database
+                .collection("stock").document("sales").collection("$datePrefix-$dateSuffix").get().addOnSuccessListener {
+                    var sum = 0
+                    var totalQuantity = 0
+                    for(t in it.documents){
+
+                        sum += (t["quantitySold"]?.toString()?:"0").toInt() * (t["price"]?.toString()?:"0").toInt()
+                        totalQuantity += (t["quantitySold"]?.toString()?:"0").toInt()
+                    }
+                    monthlySales.add(StocksManager.SalesData(dateSuffix+"일",sum,totalQuantity))
+                }
+        }
+
+        fun updateMonth(){
+            val db = DBManager.database
+                .collection("stock").document("sales")
+            val currentDate = LocalDateTime.now().format(DBManager.dateFormatter)
+            val ss = currentDate.split('-')
+            val prefix = ss[0]+'-'+ss[1]
+            var t = 1
+            for(i in 1..ss[2].toInt()){
+                addDay(datePrefix = prefix, dateSuffix = i.toString())
+            }
+            initedMonthly = true;
+        }
+    }
     lateinit var binding:ActivityAdminBinding
 
+    val firstFragment= StockListFragment()
+    val secondFragment= TodaysSalesFragment()
+    val thirdFragment = MonthlySalesFragment()
+    var fragment: Fragment = firstFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var firstFragment= StockListFragment()
         val fragmentManager= supportFragmentManager
-        val transaction = fragmentManager.beginTransaction()
-        transaction.replace(binding.adminFragment.id,firstFragment).commit()
+        val _transaction = fragmentManager.beginTransaction()
+        _transaction.replace(binding.adminFragment.id,firstFragment).commit()
+
+        binding.stockStatusButton.setOnClickListener {
+            if(fragment != firstFragment) {
+                val transaction = fragmentManager.beginTransaction()
+                transaction.replace(binding.adminFragment.id,firstFragment).commit()
+                fragment = firstFragment
+            }
+        }
+        binding.dailyButton.setOnClickListener {
+            if(fragment != secondFragment) {
+                val transaction = fragmentManager.beginTransaction()
+                transaction.replace(binding.adminFragment.id,secondFragment).commit()
+                fragment = secondFragment
+            }
+        }
+        binding.monthlyButton.setOnClickListener {
+            if(fragment != thirdFragment) {
+                val transaction = fragmentManager.beginTransaction()
+                transaction.replace(binding.adminFragment.id,thirdFragment).commit()
+                fragment = thirdFragment
+            }
+        }
+
+
+
+
 
     }
 }

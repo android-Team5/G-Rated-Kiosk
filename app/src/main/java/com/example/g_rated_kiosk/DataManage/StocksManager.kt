@@ -11,7 +11,7 @@ import java.util.Date
 class StocksManager {
     data class StockData(val price:Int, val stock:Int)
 
-    data class SalesData(val name:String, val price:Int, val quantity:Int)
+    data class SalesData(val name:String, val price:Int, var quantity:Int)
     companion object {
          var today:String = ""
 
@@ -108,9 +108,6 @@ class StocksManager {
             }
         }
 
-        fun getSalesOfDay(menu: Menu,date:Date):StockTransfer{
-            return StockTransfer(menu.Name,0,0)
-        }
 
         fun getReceiptOfDay(menu: Menu,date:Date):StockTransfer{
             return StockTransfer(menu.Name,0,0)
