@@ -24,8 +24,21 @@ class CartAdapter (val cartList: MutableList<cart>): RecyclerView.Adapter<Recycl
 
         itemBinding.itemMenuName.text= cartList[position].menu?.Name
         itemBinding.itemMenuCount.text=cartList[position].count.toString()
-        itemBinding.itemSideName.text= cartList[position].side?.Name?:""
-        itemBinding.itemDrinkName.text= cartList[position].drink?.Name?:""
+        if(cartList[position].side!=null){
+            itemBinding.itemSideName.text= cartList[position].side?.Name
+        }
+        if(cartList[position].drink!=null){
+            itemBinding.itemDrinkName.text= cartList[position].drink?.Name
+        }
+        if(cartList[position].noLettuce){
+            itemBinding.itemNoLettuce.text = "양배추 X"
+        }
+        if(cartList[position].noOnion){
+            itemBinding.itemNoOnion.text = "양파 X"
+        }
+        if(cartList[position].noPickle){
+            itemBinding.itemNoPickle.text = "피클 X"
+        }
         itemBinding.itemRoot.setOnClickListener { // 뷰에 이벤트 추가
         }
       itemBinding.itemAdd.setOnClickListener { cartList[position].count +=1
