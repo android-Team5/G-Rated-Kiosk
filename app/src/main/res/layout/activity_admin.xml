@@ -12,13 +12,22 @@
             android:layout_width="match_parent"
             android:layout_height="60dp">
             <Button
+                android:backgroundTint="#DADADA"
+                android:id="@+id/backButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="뒤로"/>
+            <Button
                 android:id="@+id/stockStatusButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="재고 현황"/>
+                android:text="재고 \n현황"/>
             <Button
                 android:id="@+id/dailyButton"
                 android:layout_width="0dp"
@@ -26,7 +35,7 @@
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="당일\n판매 현황"/>
+                android:text="당일 \n판매 현황"/>
             <Button
                 android:id="@+id/monthlyButton"
                 android:layout_width="0dp"
@@ -34,7 +43,7 @@
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="월간 매출"/>
+                android:text="월간 \n매출"/>
         </LinearLayout>
         <FrameLayout
             android:layout_width="match_parent"
