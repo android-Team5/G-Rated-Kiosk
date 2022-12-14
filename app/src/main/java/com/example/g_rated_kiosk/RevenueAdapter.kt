@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.dialog_addstock.view.*
 class DailyRevenueViewHolder (val binding: SalesitemBinding): RecyclerView.ViewHolder(binding.root)
 
 class DailyRevenueAdapter (val salesList: MutableList<StocksManager.SalesData>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    var doMult = true
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 /* inflate(int resource, ViewGroup parent, boolean attachToRoot)
 * - attachToRoot= false: parent is only used to create the correct subclass of LayoutParams
@@ -34,7 +35,11 @@ class DailyRevenueAdapter (val salesList: MutableList<StocksManager.SalesData>):
         val sale = salesList[position]
         itemBinding.stockName.text = sale.name
         itemBinding.stockCount.text = sale.quantity.toString()
-        itemBinding.revenue.text = (sale.quantity * sale.price).toString()
+        if(doMult)
+            itemBinding.revenue.text = (sale.quantity * sale.price).toString()
+        else
+            itemBinding.revenue.text = (sale.price).toString()
+
 
     }
     override fun getItemCount(): Int {

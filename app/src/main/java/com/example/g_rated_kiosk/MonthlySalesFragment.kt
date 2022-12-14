@@ -29,7 +29,7 @@ class MonthlySalesFragment : Fragment() {
         val left = view.findViewById<RecyclerView>(R.id.revenueRecycle)
 
         left.layoutManager = LinearLayoutManager(view.context)
-        left.adapter = DailyRevenueAdapter(AdminActivity.monthlySales)
+        left.adapter = DailyRevenueAdapter(AdminActivity.monthlySales).apply { doMult = false }
 
         AdminActivity.monthlySales.sortBy{
             it.name.replaceFirst("일","").toInt()
@@ -41,7 +41,7 @@ class MonthlySalesFragment : Fragment() {
         var sum = 0
 
         for(t in AdminActivity.monthlySales){
-            sum += t.price * t.quantity
+            sum += t.price
         }
 
         view.findViewById<TextView>(R.id.totalRevenue).text = "당월 총 매출액 : " + sum.toString() + "원"

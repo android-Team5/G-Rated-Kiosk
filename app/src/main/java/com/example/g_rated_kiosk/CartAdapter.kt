@@ -36,17 +36,17 @@ class CartAdapter (val cartList: MutableList<cart>): RecyclerView.Adapter<Recycl
             itemBinding.itemNoPickle.text=""
         }
         else {
-            if (cartList[position].noLettuce) {
+            if (item.noLettuce) {
                 itemBinding.itemNoLettuce.setTextColor(Color.parseColor("#d32f2f"));
                 itemBinding.itemNoLettuce.paintFlags =
                     itemBinding.itemNoLettuce.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             }
-            if (cartList[position].noOnion) {
+            if (item.noOnion) {
                 itemBinding.itemNoOnion.setTextColor(Color.parseColor("#d32f2f"));
                 itemBinding.itemNoOnion.paintFlags =
                     itemBinding.itemNoOnion.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             }
-            if (cartList[position].noPickle) {
+            if (item.noPickle) {
                 itemBinding.itemNoPickle.setTextColor(Color.parseColor("#d32f2f"));
                 itemBinding.itemNoPickle.paintFlags =
                     itemBinding.itemNoPickle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
@@ -54,23 +54,22 @@ class CartAdapter (val cartList: MutableList<cart>): RecyclerView.Adapter<Recycl
         }
         itemBinding.itemRoot.setOnClickListener { // 뷰에 이벤트 추가
         }
-      itemBinding.itemAdd.setOnClickListener { cartList[position].count = (cartList[position].count+1).coerceAtMost(MenuView.quantityThreshold)
-          notifyDataSetChanged()
-
-
+      itemBinding.itemAdd.setOnClickListener { item.count = (item.count+1).coerceAtMost(MenuView.quantityThreshold)
+          notifyItemChanged(position)
       }
-        itemBinding.itemSub.setOnClickListener { if (cartList[position].count>1){
-            cartList[position].count -=1
-
+        itemBinding.itemSub.setOnClickListener { if (item.count>1){
+            item.count -=1
+            notifyItemChanged(position)
         }
             else {
-
                 cartList.removeAt(position)
+                notifyDataSetChanged()
         }
-            notifyDataSetChanged()
         }
 
     }
+
+
     override fun getItemCount(): Int {
         return cartList.size
     }

@@ -229,27 +229,29 @@ class AdminActivity : AppCompatActivity() {
         }
 
         fun addDay(datePrefix:String,dateSuffix:String){
-            monthlySales.clear()
             DBManager.database
                 .collection("stock").document("sales").collection("$datePrefix-$dateSuffix").get().addOnSuccessListener {
                     var sum = 0
                     var totalQuantity = 0
                     for(t in it.documents){
 
+                        Log.d("got data","${t["productName"]}, ${t["quantitySold"]}, ${t["price"]}")
                         sum += (t["quantitySold"]?.toString()?:"0").toInt() * (t["price"]?.toString()?:"0").toInt()
+                        Log.d("got data",((t["quantitySold"]?.toString()?:"0").toInt() * (t["price"]?.toString()?:"0").toInt()).toString())
                         totalQuantity += (t["quantitySold"]?.toString()?:"0").toInt()
                     }
+                    Log.d("got data","$dateSuffix, $sum, $totalQuantity")
                     monthlySales.add(StocksManager.SalesData(dateSuffix+"일",sum,totalQuantity))
                 }
         }
 
         fun updateMonth(){
+            monthlySales.clear()
             val db = DBManager.database
                 .collection("stock").document("sales")
             val currentDate = LocalDateTime.now().format(DBManager.dateFormatter)
             val ss = currentDate.split('-')
             val prefix = ss[0]+'-'+ss[1]
-            var t = 1
             for(i in 1..ss[2].toInt()){
                 addDay(datePrefix = prefix, dateSuffix = i.toString())
             }

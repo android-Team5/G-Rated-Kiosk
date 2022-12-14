@@ -67,7 +67,7 @@ class SingleActivity: AppCompatActivity() {
         }
         okButton2.setOnClickListener{
             Common.chosenMenu.count=1;
-            Common.addToCart(Common.chosenMenu)
+            Common.addToCart(cart(Common.chosenMenu))
             Common.chosenMenu = cart()
 
             val intent = Intent(this, MenuSelect::class.java)
