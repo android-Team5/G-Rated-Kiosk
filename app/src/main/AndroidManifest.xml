@@ -14,9 +14,6 @@
         android:theme="@style/Theme.G_rated_kiosk"
         tools:targetApi="31">
         <activity
-            android:name=".DataManageTestPage"
-            android:exported="false" />
-        <activity
             android:name=".MenuSelect"
             android:exported="true">
             <meta-data
@@ -37,6 +34,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".SingleActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".SetActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".SetSingle"
+            android:exported="true" >
         </activity>
     </application>
 

@@ -1,8 +1,10 @@
 package com.example.g_rated_kiosk
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.GridLayout
 import androidx.core.view.children
@@ -139,13 +141,18 @@ class MenuSelect : AppCompatActivity() {
     private fun addCartAndRefresh(MenuView:MenuView){
         MenuView.onPerformClickEvent = View.OnClickListener {
 
+            //Common.chosenMenu.menu = (it as MenuView).currentMenu
+            //binding.recycle.scrollToPosition(cartList.size)
+            //Common.addToCart(Common.chosenMenu)
+            //binding.recycle.adapter!!.notifyDataSetChanged()
+//
+//
+            //Common.chosenMenu = cart()
+
             Common.chosenMenu.menu = (it as MenuView).currentMenu
-            binding.recycle.scrollToPosition(cartList.size)
-            Common.addToCart(Common.chosenMenu)
-            binding.recycle.adapter!!.notifyDataSetChanged()
-
-
-            Common.chosenMenu = cart()
+            val intent = Intent(this,SetSingle::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -182,6 +189,8 @@ class MenuSelect : AppCompatActivity() {
         binding.nextPageButton.setOnClickListener {
             ChangePage(currentPage+1)
         }
+
+
 
 
     }
