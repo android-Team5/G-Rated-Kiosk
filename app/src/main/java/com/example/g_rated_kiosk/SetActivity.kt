@@ -93,7 +93,6 @@ class SetActivity : AppCompatActivity() {
         nextButton.setOnClickListener{
             val intent = Intent(this, SingleActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
 

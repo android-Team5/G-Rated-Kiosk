@@ -49,6 +49,7 @@ android:orientation="vertical">
     </GridLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/purchaseButton"
         android:layout_width="290dp"
         android:layout_height="120dp"
         android:layout_marginTop="80dp"
@@ -57,6 +58,18 @@ android:orientation="vertical">
         android:backgroundTint="#F1B607"
         android:text="결제"
         android:textColor="@color/black"
+        android:textSize="30sp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancelButton"
+        android:layout_width="290dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        app:cornerRadius="20dp"
+        android:text="취소"
+        android:backgroundTint="#5C5757"
+        android:textColor="@color/white"
         android:textSize="30sp"/>
 
 

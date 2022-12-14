@@ -43,6 +43,12 @@
             android:exported="true" />
 
         <activity
+            android:name=".OrderListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PaymentSelection"
+            android:exported="true" />
+        <activity
             android:name=".SetSingle"
             android:exported="true" >
         </activity>

@@ -140,19 +140,22 @@ class MenuSelect : AppCompatActivity() {
 
     private fun addCartAndRefresh(MenuView:MenuView){
         MenuView.onPerformClickEvent = View.OnClickListener {
+            Common.chosenMenu = cart()
 
-            //Common.chosenMenu.menu = (it as MenuView).currentMenu
-            //binding.recycle.scrollToPosition(cartList.size)
-            //Common.addToCart(Common.chosenMenu)
-            //binding.recycle.adapter!!.notifyDataSetChanged()
-//
-//
-            //Common.chosenMenu = cart()
 
-            Common.chosenMenu.menu = (it as MenuView).currentMenu
-            val intent = Intent(this,SetSingle::class.java)
-            startActivity(intent)
-            finish()
+
+            if((it as MenuView).currentMenu!!.Type == MenuType.BURGER) {
+                Common.chosenMenu.menu = (it as MenuView).currentMenu
+                val intent = Intent(this, SetSingle::class.java)
+                startActivity(intent)
+                finish()
+            }
+            else{
+                Common.chosenMenu.menu = (it as MenuView).currentMenu
+                binding.recycle.scrollToPosition(cartList.size)
+                Common.addToCart(Common.chosenMenu)
+                binding.recycle.adapter!!.notifyDataSetChanged()
+            }
         }
     }
 
@@ -190,7 +193,9 @@ class MenuSelect : AppCompatActivity() {
             ChangePage(currentPage+1)
         }
 
-
+        binding.purchase.setOnClickListener{
+             startActivity(Intent(this,OrderListActivity::class.java))
+        }
 
 
     }

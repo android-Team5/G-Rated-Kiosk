@@ -1,6 +1,7 @@
 package com.example.g_rated_kiosk
 
 import android.app.Application
+import com.example.g_rated_kiosk.DataManage.MenuStocks
 
 
 class cart {
@@ -12,6 +13,25 @@ class cart {
     var noOnion = false;
     var noLettuce= false;
     var count=0;
+
+    fun getPrice():Int{
+        var priceSum:Int = 0
+        menu?.let{
+            priceSum += MenuStocks.find(it.Name)?.Price?:0
+        }
+        side?.let{
+            priceSum += MenuStocks.find(it.Name)?.Price?:0
+        }
+        drink?.let{
+            priceSum += MenuStocks.find(it.Name)?.Price?:0
+        }
+
+        if(side!=null){
+            priceSum -= 1300
+        }
+        priceSum *= count
+        return priceSum
+    }
 }
 public class Common{
     companion object{
