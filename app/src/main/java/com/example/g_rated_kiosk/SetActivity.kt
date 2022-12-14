@@ -72,7 +72,7 @@ class SetActivity : AppCompatActivity() {
             image9.visibility = View.INVISIBLE
         }
         mirindaBtn.setOnClickListener {
-            Common.chosenMenu.drink = MenuController.FindMenu(MenuController.GetMenus(MenuType.DRINKS),"미린다")
+            Common.chosenMenu.drink = MenuController.FindMenu(MenuController.GetMenus(MenuType.DRINKS),"미란다")
             image6.visibility = View.INVISIBLE
             image7.visibility = View.INVISIBLE
             image8.visibility = View.VISIBLE

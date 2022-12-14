@@ -14,10 +14,17 @@ android:orientation="vertical">
 <!--        android:layout_marginTop="80dp"-->
 <!--        tools:listitem="@layout/custom_checkout_list"/>-->
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/purchaseListRecycle"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="0dp"/>
+
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="10dp"
         android:columnCount="3"
         android:layout_gravity="center_horizontal">
 
@@ -51,8 +58,8 @@ android:orientation="vertical">
     <com.google.android.material.button.MaterialButton
         android:id="@+id/purchaseButton"
         android:layout_width="290dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="120dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
         app:cornerRadius="20dp"
         android:backgroundTint="@color/yellow_700"
@@ -63,7 +70,7 @@ android:orientation="vertical">
     <com.google.android.material.button.MaterialButton
         android:id="@+id/cancelButton"
         android:layout_width="290dp"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
         app:cornerRadius="20dp"

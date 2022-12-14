@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.g_rated_kiosk.databinding.OrderListConfirmationBinding
 import com.example.g_rated_kiosk.databinding.PaymentMethodBinding
 
@@ -23,6 +24,10 @@ class OrderListActivity : AppCompatActivity() {
         for(t in Common.cartList){
             sum += t.getPrice()
         }
+
+        binding.purchaseListRecycle.layoutManager = LinearLayoutManager(this)
+        binding.purchaseListRecycle.adapter = PurchaseListAdapter(Common.cartList)
+
 
         binding.totalCost.text = sum.toString()
 

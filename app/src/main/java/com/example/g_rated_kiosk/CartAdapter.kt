@@ -4,6 +4,8 @@ package com.example.g_rated_kiosk
 import android.graphics.Color
 import android.graphics.Paint
 import android.view.LayoutInflater
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.g_rated_kiosk.databinding.ActivityMenuSelectBinding
@@ -30,26 +32,44 @@ class CartAdapter (val cartList: MutableList<cart>): RecyclerView.Adapter<Recycl
         itemBinding.itemSideName.text= item.side?.Name?:""
         itemBinding.itemDrinkName.text= item.drink?.Name?:""
 
-        if((item.menu?.Type?:MenuType.SIDE) != MenuType.BURGER){
-            itemBinding.itemNoOnion.text=""
-            itemBinding.itemNoLettuce.text=""
-            itemBinding.itemNoPickle.text=""
+        if(item.menu?.Type != MenuType.BURGER){
+            itemBinding.itemNoOnion.visibility=INVISIBLE;
+            itemBinding.itemNoLettuce.visibility=INVISIBLE;
+            itemBinding.itemNoPickle.visibility=INVISIBLE;
         }
         else {
+            itemBinding.itemNoOnion.visibility=VISIBLE;
+            itemBinding.itemNoLettuce.visibility=VISIBLE;
+            itemBinding.itemNoPickle.visibility=VISIBLE;
             if (cartList[position].noLettuce) {
                 itemBinding.itemNoLettuce.setTextColor(Color.parseColor("#d32f2f"));
                 itemBinding.itemNoLettuce.paintFlags =
                     itemBinding.itemNoLettuce.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            }
+            else{
+                itemBinding.itemNoLettuce.setTextColor(Color.parseColor("#8A000000"))
+                itemBinding.itemNoLettuce.paintFlags =
+                    itemBinding.itemNoLettuce.paintFlags and (itemBinding.itemNoLettuce.paintFlags xor Paint.STRIKE_THRU_TEXT_FLAG)
             }
             if (cartList[position].noOnion) {
                 itemBinding.itemNoOnion.setTextColor(Color.parseColor("#d32f2f"));
                 itemBinding.itemNoOnion.paintFlags =
                     itemBinding.itemNoOnion.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             }
+            else{
+                itemBinding.itemNoOnion.setTextColor(Color.parseColor("#8A000000"))
+                itemBinding.itemNoOnion.paintFlags =
+                    itemBinding.itemNoOnion.paintFlags and (itemBinding.itemNoOnion.paintFlags xor Paint.STRIKE_THRU_TEXT_FLAG)
+            }
             if (cartList[position].noPickle) {
                 itemBinding.itemNoPickle.setTextColor(Color.parseColor("#d32f2f"));
                 itemBinding.itemNoPickle.paintFlags =
                     itemBinding.itemNoPickle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            }
+            else{
+                itemBinding.itemNoPickle.setTextColor(Color.parseColor("#8A000000"))
+                itemBinding.itemNoPickle.paintFlags =
+                    itemBinding.itemNoPickle.paintFlags and (itemBinding.itemNoPickle.paintFlags xor Paint.STRIKE_THRU_TEXT_FLAG)
             }
         }
         itemBinding.itemRoot.setOnClickListener { // 뷰에 이벤트 추가
