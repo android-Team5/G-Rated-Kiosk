@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
+
+<!--    <ListView-->
+<!--        android:id="@+id/order_list"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        tools:listitem="@layout/custom_checkout_list"/>-->
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:columnCount="3"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text = "결제금액:"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textAlignment="center"/>
+        <TextView
+            android:id="@+id/total_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "11000"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textAlignment="center"/>
+        <TextView
+            android:id="@+id/Product_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "원"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textAlignment="center"/>
+
+    </GridLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="290dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center_horizontal"
+        app:cornerRadius="20dp"
+        android:backgroundTint="#F1B607"
+        android:text="결제"
+        android:textColor="@color/black"
+        android:textSize="30sp"/>
+
+
+
+
+
+</LinearLayout>
+

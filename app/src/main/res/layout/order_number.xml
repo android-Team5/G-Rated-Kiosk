@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/equationDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text = "주문번호를 화긴하고\n 호출될때가지 기다리십시오 "
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="30sp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text = "주문번호"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="30sp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "150"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="50sp"/>
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text = "감사합니다"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="30sp"/>
+
+
+</LinearLayout>

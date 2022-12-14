@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/scan_instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="97dp"
+            android:layout_marginEnd="10dp"
+            android:text="상품권 바코드를 스캔해주세요"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/barcode_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/scan_instruction"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="61dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginBottom="338dp"
+            android:src="@drawable/barcode_3" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
