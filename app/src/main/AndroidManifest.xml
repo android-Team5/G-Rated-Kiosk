@@ -24,7 +24,7 @@
             android:name=".AdminActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".FromHereToGo"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
