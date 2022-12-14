@@ -11,181 +11,160 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_gravity="top"
+        android:layout_gravity="center_horizontal"
         android:autoSizeTextType="uniform"
         android:background="#dee2e6"
+        android:textAlignment="center"
         android:text="토핑 추가 및 제거"/>
 
     <LinearLayout
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp">
 
-        <CheckBox
-            android:id="@+id/checkBox1"
-            android:layout_width="235dp"
-            android:layout_height="80dp"
-            android:layout_gravity="left"
-            android:autoSizeTextType="uniform"
-            android:text="모든 야채 추가" />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="50dp"
+                >
+                <TextView
+                    android:layout_marginLeft="25dp"
+                    android:layout_width="140dp"
+                    android:layout_height="60dp"
+                    android:autoSizeTextType="uniform"
+                    android:text="양상추"
+                    android:gravity="center"/>
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/lettuce"
+                    android:layout_gravity="center"/>
+                    <ImageView
+                        android:id="@+id/noLettuce"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/unselect"
+                        android:visibility="invisible"
+                        android:layout_gravity="center"/>
+                </FrameLayout>
+                <Button
+                    android:id="@+id/del1"
+                    android:layout_marginLeft="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:text="제외"
+                    android:autoSizeTextType="uniform"
+                    android:textStyle="bold"
+                    android:backgroundTint="#B5B3B3"/>
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_gravity="right"
-            android:gravity="center"
-            android:autoSizeTextType="uniform"
-            android:text="+ 500원"
 
-            />
+
+
+        <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal"
+            android:layout_marginBottom="50dp"
+                    >
+                    <TextView
+                        android:layout_width="140dp"
+                        android:layout_height="60dp"
+                        android:autoSizeTextType="uniform"
+                        android:layout_marginLeft="25dp"
+                        android:text="양파"
+                        android:gravity="center"/>
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/onion"
+                            android:layout_gravity="center"/>
+                        <ImageView
+                            android:id="@+id/noOnion"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/unselect"
+                            android:visibility="invisible"
+                            android:layout_gravity="center"/>
+                    </FrameLayout>
+                    <Button
+                        android:layout_marginLeft="50dp"
+                        android:id="@+id/del2"
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:text="제외"
+                        android:autoSizeTextType="uniform"
+                        android:textStyle="bold"
+                        android:backgroundTint="#B5B3B3"/>
+                </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal"
+
+                        >
+                        <TextView
+                            android:layout_width="140dp"
+                            android:layout_height="60dp"
+                            android:autoSizeTextType="uniform"
+                            android:layout_marginLeft="25dp"
+                            android:text="피클"
+                            android:gravity="center"/>
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/pickles"
+                                android:layout_gravity="center"/>
+                            <ImageView
+                                android:id="@+id/noPickle"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/unselect"
+                                android:visibility="invisible"
+                                android:layout_gravity="center"/>
+                        </FrameLayout>
+                        <Button
+                            android:id="@+id/del3"
+                            android:layout_marginLeft="50dp"
+                            android:layout_width="60dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:text="제외"
+                            android:autoSizeTextType="uniform"
+                            android:textStyle="bold"
+                            android:backgroundTint="#B5B3B3"/>
+                    </LinearLayout>
+
+
+
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        >
-
-        <Button
-            android:id="@+id/add1"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:autoSizeTextType="uniform"
-            android:gravity="left"
-            android:text="추가"
-            android:textStyle="bold"
-            android:backgroundTint="#B5B3B3"
-            />
-
-        <Button
-            android:id="@+id/del1"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:text="제외"
-            android:autoSizeTextType="uniform"
-            android:textStyle="bold"
-            android:backgroundTint="#B5B3B3"/>
-
-        <TextView
-            android:layout_width="140dp"
-            android:layout_height="60dp"
-            android:autoSizeTextType="uniform"
-            android:text="양상추"
-            android:gravity="center"/>
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/lettuce"
-            android:layout_gravity="center"/>
-        <TextView
-            android:id="@+id/extraPrice1"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text="+ 0원"
-            android:gravity="center"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        >
-
-        <Button
-            android:id="@+id/add2"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:autoSizeTextType="uniform"
-            android:gravity="left"
-            android:text="추가"
-            android:textStyle="bold"
-            android:backgroundTint="#B5B3B3"/>
-
-        <Button
-            android:id="@+id/del2"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:text="제외"
-            android:autoSizeTextType="uniform"
-            android:textStyle="bold"
-            android:backgroundTint="#B5B3B3"/>
-
-        <TextView
-            android:layout_width="140dp"
-            android:layout_height="60dp"
-            android:autoSizeTextType="uniform"
-            android:text="양파"
-            android:gravity="center"/>
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:background="@drawable/onion"/>
-        <TextView
-            android:id="@+id/extraPrice2"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text="+ 0원"
-            android:gravity="center"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        >
-
-        <Button
-            android:id="@+id/add3"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:autoSizeTextType="uniform"
-            android:gravity="left"
-            android:text="추가"
-            android:textStyle="bold"
-            android:backgroundTint="#B5B3B3"
-            />
-
-        <Button
-            android:id="@+id/del3"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:text="제외"
-            android:autoSizeTextType="uniform"
-            android:textStyle="bold"
-            android:backgroundTint="#B5B3B3"/>
-
-        <TextView
-            android:layout_width="140dp"
-            android:layout_height="60dp"
-            android:autoSizeTextType="uniform"
-            android:text="피클"
-            android:gravity="center"/>
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:background="@drawable/pickles"/>
-        <TextView
-            android:id="@+id/extraPrice3"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text="+ 0원"
-            android:gravity="center"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="10"
         >
 
         <Button
