@@ -42,6 +42,11 @@ class StockItemsAdapter (val stockList: MutableList<MenuStock>): RecyclerView.Ad
     // onCreateViewHolder()에서 반환한 뷰 홀더 객체는 자동으로 onBindViewHolder()의 매개변수로 전달
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
+
+        MenuStocks.notSoldout.sortBy{
+            it.GetStock()
+        }
+
         val itemBinding = (holder as MyAdminViewHolder).binding
         val stock = stockList[position]
         itemBinding.stockName.text = stock.Name
@@ -290,7 +295,7 @@ class AdminActivity : AppCompatActivity() {
         }
 
         binding.backButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity2::class.java))
+            startActivity(Intent(this, FromHereToGo::class.java))
             finish()
         }
     }

@@ -58,6 +58,7 @@ public class Common{
                     && cart.noOnion == cm.noOnion
                     && cart.noLettuce == cm.noLettuce
                     && cart.noPickle == cm.noPickle){
+                    cart.count = (cart.count + 1).coerceAtMost(MenuView.quantityThreshold)
                     cart.count +=1
                     check=1
                     break

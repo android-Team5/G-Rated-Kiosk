@@ -54,7 +54,7 @@ class CartAdapter (val cartList: MutableList<cart>): RecyclerView.Adapter<Recycl
         }
         itemBinding.itemRoot.setOnClickListener { // 뷰에 이벤트 추가
         }
-      itemBinding.itemAdd.setOnClickListener { cartList[position].count +=1
+      itemBinding.itemAdd.setOnClickListener { cartList[position].count = (cartList[position].count+1).coerceAtMost(MenuView.quantityThreshold)
           notifyDataSetChanged()
 
 
