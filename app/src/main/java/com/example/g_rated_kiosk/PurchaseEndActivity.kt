@@ -30,7 +30,7 @@ class PurchaseEndActivity : AppCompatActivity() {
         GlobalScope.launch() {
             delay(3000L)
             Common.cartList.clear()
-            startActivity(Intent(this@PurchaseEndActivity,MenuSelect::class.java))
+            startActivity(Intent(this@PurchaseEndActivity,FromHereToGo::class.java))
             finish()
         }
 

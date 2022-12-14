@@ -17,6 +17,7 @@ import com.example.g_rated_kiosk.DataManage.StocksManager
 import com.example.g_rated_kiosk.databinding.ActivityMenuSelectBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.fhtg.*
 
 class MenuSelect : AppCompatActivity() {
 
@@ -89,18 +90,18 @@ class MenuSelect : AppCompatActivity() {
             Common.chosenMenu = cart()
 
 
-
             if((it as MenuView).currentMenu!!.Type == MenuType.BURGER) {
                 Common.chosenMenu.menu = (it as MenuView).currentMenu
                 val intent = Intent(this, SetSingle::class.java)
                 startActivity(intent)
-                finish()
             }
             else{
                 Common.chosenMenu.menu = (it as MenuView).currentMenu
-                binding.recycle.scrollToPosition(cartList.size)
+
                 Common.addToCart(Common.chosenMenu)
+                Common.chosenMenu = cart()
                 binding.recycle.adapter!!.notifyDataSetChanged()
+                binding.recycle.scrollToPosition(cartList.size-1)
             }
         }
     }
@@ -111,6 +112,7 @@ class MenuSelect : AppCompatActivity() {
         binding = ActivityMenuSelectBinding.inflate(layoutInflater)
         binding.recycle.layoutManager = LinearLayoutManager(this)
         binding.recycle.adapter=CartAdapter(cartList = cartList)
+
 
         itemPerPage = binding.grid.rowCount * binding.grid.columnCount
 
@@ -137,12 +139,17 @@ class MenuSelect : AppCompatActivity() {
 
         binding.nextPageButton.setOnClickListener {
             ChangePage(currentPage+1)
+
         }
 
         binding.purchase.setOnClickListener{
              startActivity(Intent(this,OrderListActivity::class.java))
         }
-
-
+        binding.backButton3.setOnClickListener {
+            var intent = Intent(this, FromHereToGo::class.java);
+            startActivity(intent)
+            finish()
+        }
+        binding.recycle.scrollToPosition(Common.cartList.size-1)
     }
 }

@@ -1,6 +1,8 @@
 
 package com.example.g_rated_kiosk
 
+import android.graphics.Color
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -21,28 +23,40 @@ class CartAdapter (val cartList: MutableList<cart>): RecyclerView.Adapter<Recycl
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         val itemBinding = (holder as MyViewHolder).binding
+        val item = cartList[position]
+        itemBinding.itemImage.setImageDrawable(item.menu?.MenuImage);
+        itemBinding.itemMenuName.text= item.menu?.Name
+        itemBinding.itemMenuCount.text=item.count.toString()
+        itemBinding.itemSideName.text= item.side?.Name?:""
+        itemBinding.itemDrinkName.text= item.drink?.Name?:""
 
-        itemBinding.itemMenuName.text= cartList[position].menu?.Name
-        itemBinding.itemMenuCount.text=cartList[position].count.toString()
-        if(cartList[position].side!=null){
-            itemBinding.itemSideName.text= cartList[position].side?.Name
+        if((item.menu?.Type?:MenuType.SIDE) != MenuType.BURGER){
+            itemBinding.itemNoOnion.text=""
+            itemBinding.itemNoLettuce.text=""
+            itemBinding.itemNoPickle.text=""
         }
-        if(cartList[position].drink!=null){
-            itemBinding.itemDrinkName.text= cartList[position].drink?.Name
-        }
-        if(cartList[position].noLettuce){
-            itemBinding.itemNoLettuce.text = "양배추 X"
-        }
-        if(cartList[position].noOnion){
-            itemBinding.itemNoOnion.text = "양파 X"
-        }
-        if(cartList[position].noPickle){
-            itemBinding.itemNoPickle.text = "피클 X"
+        else {
+            if (cartList[position].noLettuce) {
+                itemBinding.itemNoLettuce.setTextColor(Color.parseColor("#d32f2f"));
+                itemBinding.itemNoLettuce.paintFlags =
+                    itemBinding.itemNoLettuce.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            }
+            if (cartList[position].noOnion) {
+                itemBinding.itemNoOnion.setTextColor(Color.parseColor("#d32f2f"));
+                itemBinding.itemNoOnion.paintFlags =
+                    itemBinding.itemNoOnion.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            }
+            if (cartList[position].noPickle) {
+                itemBinding.itemNoPickle.setTextColor(Color.parseColor("#d32f2f"));
+                itemBinding.itemNoPickle.paintFlags =
+                    itemBinding.itemNoPickle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            }
         }
         itemBinding.itemRoot.setOnClickListener { // 뷰에 이벤트 추가
         }
       itemBinding.itemAdd.setOnClickListener { cartList[position].count +=1
           notifyDataSetChanged()
+
 
       }
         itemBinding.itemSub.setOnClickListener { if (cartList[position].count>1){

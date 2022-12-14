@@ -1,50 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
+    android:gravity="center_horizontal"
     android:paddingTop="5dp">
 
-    <Button
-        android:id="@+id/BtnBasic"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:layout_gravity="top"
-        android:text="세트 기본\n(감튀 + 콜라)"
-        android:textSize="55dp"
-        android:backgroundTint="#FF9800"
-        android:textStyle="bold"/>
+
+
 
     <Button
-        android:id="@+id/BtnSet"
-        android:layout_width="491dp"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:layout_gravity="center"
-        android:text="세트"
-        android:backgroundTint="#2196F3"
-        android:textSize="100dp"
+        android:id="@+id/BtnSingle"
+        android:layout_marginTop="30dp"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        app:cornerRadius="20dp"
+        android:text="단품"
+        android:backgroundTint="@color/yellow_700"
+        android:textSize="50dp"
         android:textStyle="bold"/>
     <Button
-        android:id="@+id/BtnSingle"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:layout_gravity="bottom"
-        android:text="단품"
-        android:backgroundTint="#2196F3"
-        android:textSize="100dp"
+
+        android:id="@+id/BtnSet"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        app:cornerRadius="20dp"
+        android:layout_marginTop="10dp"
+        android:text="세트"
+        android:backgroundTint="@color/yellow_700"
+        android:textSize="50dp"
+        android:textStyle="bold"/>
+    <Button
+        android:id="@+id/BtnBasic"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        app:cornerRadius="20dp"
+        android:layout_marginTop="10dp"
+        android:text="세트 기본\n(감자튀김 + 콜라)"
+        android:textSize="30dp"
+
+        android:backgroundTint="@color/deepOrange_500"
         android:textStyle="bold"/>
     <Button
         android:id="@+id/BtnBack"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_gravity="bottom"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        app:cornerRadius="13dp"
         android:text="뒤로"
-        android:backgroundTint="#5C5757"
+        android:textColor="@color/white"
+        android:backgroundTint="#bdbdbd"
         android:textSize="40dp"
         android:textStyle="bold"/>
 

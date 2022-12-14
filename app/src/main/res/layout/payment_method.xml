@@ -20,14 +20,14 @@
         android:id="@+id/voucher_payment"
         android:layout_width="290dp"
         android:layout_height="120dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
         android:layout_gravity="center_horizontal"
         app:cornerRadius="20dp"
         android:backgroundTint="#F1B607"
         android:drawableLeft="@drawable/gift_icon"
         android:text="모바일 상품권"
         android:textColor="@color/black"
-        android:textSize="30sp"/>
+        android:textSize="25dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/card_payment"
@@ -45,12 +45,12 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/cancelSelectionButton"
         android:layout_width="290dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center_horizontal"
-        app:cornerRadius="19dp"
-        android:backgroundTint="#F4F4F2"
-        android:text="Back"
+        app:cornerRadius="10dp"
+        android:backgroundTint="#bdbdbd"
+        android:text="뒤로"
         android:textColor="@color/black"
         android:textSize="25sp"/>
 

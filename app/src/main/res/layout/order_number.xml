@@ -10,7 +10,7 @@
         android:id="@+id/equationDisplay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:text = "주문번호를 확인하고\n 호출될때가지 기다리십시오 "
         android:textColor="@color/black"
         android:textAlignment="center"
@@ -20,7 +20,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         android:text = "주문번호"
         android:textColor="@color/black"
         android:textAlignment="center"
@@ -41,7 +41,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         android:text = "감사합니다"
         android:textColor="@color/black"
         android:textAlignment="center"

@@ -20,12 +20,12 @@ class SingleActivity: AppCompatActivity() {
             if (!Common.chosenMenu.noLettuce)
             {
                 Common.chosenMenu.noLettuce = true;
-                del1.setBackgroundColor(Color.BLUE)
+                del1.setBackgroundColor(Color.parseColor("#fdd835"))
                 noLettuce.visibility=VISIBLE;
             }
             else{
                 Common.chosenMenu.noLettuce = false;
-                del1.setBackgroundColor(Color.parseColor("#b5b3b3"));
+                del1.setBackgroundColor(Color.parseColor("#f5f5f5"));
                 noLettuce.visibility=INVISIBLE;
             }
 
@@ -37,12 +37,12 @@ class SingleActivity: AppCompatActivity() {
             if (!Common.chosenMenu.noOnion)
             {
                 Common.chosenMenu.noOnion = true;
-                del2.setBackgroundColor(Color.BLUE)
+                del2.setBackgroundColor(Color.parseColor("#fdd835"))
                 noOnion.visibility= VISIBLE;
             }
             else{
                 Common.chosenMenu.noOnion = false;
-                del2.setBackgroundColor(Color.parseColor("#b5b3b3"));
+                del2.setBackgroundColor(Color.parseColor("#f5f5f5"));
                 noOnion.visibility = INVISIBLE;
             }//            onionCnt -= 1
 //
@@ -55,12 +55,12 @@ class SingleActivity: AppCompatActivity() {
             if (!Common.chosenMenu.noPickle)
             {
                 Common.chosenMenu.noPickle = true;
-                del3.setBackgroundColor(Color.BLUE)
+                del3.setBackgroundColor(Color.parseColor("#fdd835"))
                 noPickle.visibility= VISIBLE;
             }
             else{
                 Common.chosenMenu.noPickle = false;
-                del3.setBackgroundColor(Color.parseColor("#b5b3b3"));
+                del3.setBackgroundColor(Color.parseColor("#f5f5f5"));
                 noPickle.visibility= INVISIBLE
             }//            pickleCnt -= 1
 //
