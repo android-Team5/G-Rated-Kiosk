@@ -21,7 +21,15 @@ class SetSingle : AppCompatActivity() {
                 finish()
         }
         BtnBasic.setOnClickListener {
-            val intent = Intent(this, MenuSelect::class.java)
+            Common.chosenMenu.drink = MenuController.FindMenu(MenuController.GetMenus(MenuType.DRINKS),"콜라");
+            Common.chosenMenu.side = MenuController.FindMenu(MenuController.GetMenus(MenuType.SIDE),"케이준양념감자");
+            Common.chosenMenu.count=1;
+            Common.addToCart(Common.chosenMenu)
+            Common.chosenMenu = cart()
+
+            var intent = Intent(this, MenuSelect::class.java);
+
+
             startActivity(intent)
             finish()
         }

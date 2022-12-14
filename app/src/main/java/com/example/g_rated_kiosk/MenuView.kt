@@ -47,7 +47,7 @@ class MenuView
             view.menuPrice.setTextColor(Color.RED)
         }
         else{
-            view.menuPrice.text = currentMenu!!.Price.toString() + "원" + String.format("(${MenuStocks.find(currentMenu!!.Name)?.Stock?:0})")
+            SetMenuPrice(currentMenu!!.Price)
             view.menuPrice.setTextColor(Color.BLACK)
         }
     }
@@ -61,7 +61,11 @@ class MenuView
     }
 
     private fun SetMenuPrice(price: Int) {
-        view.menuPrice.text = price.toString() + "원" + String.format("(${MenuStocks.find(currentMenu?.Name?:"")?.Stock?:0})")
+        if((currentMenu?.Type?:MenuType.SIDE) == MenuType.BURGER){
+            view.menuPrice.text = "단품 : " + price.toString() + "원\n" + "세트 : " + (price + 2300).toString() + "원"
+        }
+        else
+            view.menuPrice.text = price.toString() + "원"
     }
 
     fun ClearMenu() {

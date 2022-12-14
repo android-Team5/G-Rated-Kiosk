@@ -24,7 +24,12 @@ class CartAdapter (val cartList: MutableList<cart>): RecyclerView.Adapter<Recycl
 
         itemBinding.itemMenuName.text= cartList[position].menu?.Name
         itemBinding.itemMenuCount.text=cartList[position].count.toString()
-
+        if(cartList[position].side!=null){
+            itemBinding.itemSideName.text= cartList[position].side?.Name
+        }
+        if(cartList[position].drink!=null){
+            itemBinding.itemDrinkName.text= cartList[position].drink?.Name
+        }
         itemBinding.itemRoot.setOnClickListener { // 뷰에 이벤트 추가
         }
       itemBinding.itemAdd.setOnClickListener { cartList[position].count +=1

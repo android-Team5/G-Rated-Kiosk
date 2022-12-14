@@ -29,7 +29,7 @@
             android:scaleType="centerCrop"
             android:backgroundTint="#FFF"
             android:src="@drawable/psyburger"
-            android:onClick="checkPoint"
+
             />
 
         <ImageView
@@ -468,7 +468,7 @@
         >
 
     <Button
-        android:id="@+id/nextButton"
+        android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="120dp"
         android:backgroundTint="#5C5757"
@@ -478,7 +478,7 @@
 
         />
     <Button
-        android:id="@+id/okButton"
+        android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="120dp"
         android:backgroundTint="#FF0000"
