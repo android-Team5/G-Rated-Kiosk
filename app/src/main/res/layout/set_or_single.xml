@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:paddingTop="5dp">
+
+    <Button
+        android:id="@+id/BtnBasic"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.3"
+        android:layout_gravity="top"
+        android:text="세트 기본"
+        android:textSize="85dp"
+        android:backgroundTint="#FF9800"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/BtnSet"
+        android:layout_width="491dp"
+        android:layout_height="0dp"
+        android:layout_weight="3.3"
+        android:layout_gravity="center"
+        android:text="세트"
+        android:backgroundTint="#2196F3"
+        android:textSize="100dp"
+        android:textStyle="bold"/>
+    <Button
+        android:id="@+id/BtnSingle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.3"
+        android:layout_gravity="bottom"
+        android:text="단품"
+        android:backgroundTint="#2196F3"
+        android:textSize="100dp"
+        android:textStyle="bold"/>
+
+</LinearLayout>

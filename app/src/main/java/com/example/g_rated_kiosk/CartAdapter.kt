@@ -4,6 +4,7 @@ package com.example.g_rated_kiosk
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.g_rated_kiosk.databinding.ActivityMenuSelectBinding
 import com.example.g_rated_kiosk.databinding.ItemBinding
 
 
@@ -18,12 +19,34 @@ class CartAdapter (val cartList: MutableList<cart>): RecyclerView.Adapter<Recycl
     }
     // onCreateViewHolder()에서 반환한 뷰 홀더 객체는 자동으로 onBindViewHolder()의 매개변수로 전달
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val binding = (holder as MyViewHolder).binding
 
-        binding.itemMenuName.text= cartList[position].menu?.Name + cartList[position].count.toString()
+        val itemBinding = (holder as MyViewHolder).binding
 
-        binding.itemRoot.setOnClickListener { // 뷰에 이벤트 추가
+        itemBinding.itemMenuName.text= cartList[position].menu?.Name
+        itemBinding.itemMenuCount.text=cartList[position].count.toString()
+        if(cartList[position].side!=null){
+            itemBinding.itemSideName.text= cartList[position].side?.Name
         }
+        if(cartList[position].drink!=null){
+            itemBinding.itemDrinkName.text= cartList[position].drink?.Name
+        }
+        itemBinding.itemRoot.setOnClickListener { // 뷰에 이벤트 추가
+        }
+      itemBinding.itemAdd.setOnClickListener { cartList[position].count +=1
+          notifyDataSetChanged()
+
+      }
+        itemBinding.itemSub.setOnClickListener { if (cartList[position].count>1){
+            cartList[position].count -=1
+
+        }
+            else {
+
+                cartList.removeAt(position)
+        }
+            notifyDataSetChanged()
+        }
+
     }
     override fun getItemCount(): Int {
         return cartList.size

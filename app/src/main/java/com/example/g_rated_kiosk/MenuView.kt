@@ -2,7 +2,6 @@ package com.example.g_rated_kiosk
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
@@ -12,19 +11,46 @@ import android.view.MotionEvent
 import android.view.MotionEvent.*
 import android.view.View
 import android.widget.LinearLayout
-import com.example.g_rated_kiosk.Common.Companion.addToCart
-import com.example.g_rated_kiosk.Common.Companion.cartList
-import com.example.g_rated_kiosk.Common.Companion.chosenMenu
-
+import com.example.g_rated_kiosk.DataManage.MenuStocks
 import com.example.g_rated_kiosk.databinding.MenuviewBinding
 
 
 class MenuView
     (context: Context?, attr: AttributeSet) : LinearLayout(context!!, attr) {
 
+    companion object{
+        val quantityThreshold:Int = 5 // 메뉴를 판매개시할 수 있는 최소 수량. 재고가 이 수치 이하일 경우 품절처리
+    }
+
     var view: MenuviewBinding
-    var onClickEvent:OnClickListener? = null
-    public var currentMenu:Menu? = null
+    var onPerformClickEvent:OnClickListener? = null
+    var currentMenu:Menu? = null
+    var isSoldOut = false
+
+    fun UpdateStock(){
+        isSoldOut = true
+        currentMenu?.let{
+            val stock = MenuStocks.find(it.Name)
+            if((stock?.Stock ?: 0) <= quantityThreshold){
+                SetSoldOut(true)
+            }
+            else{
+                SetSoldOut(false)
+            }
+        }
+    }
+
+    private fun SetSoldOut(value: Boolean){
+        isSoldOut = value
+        if(value){
+            view.menuPrice.text = "품절"
+            view.menuPrice.setTextColor(Color.RED)
+        }
+        else{
+            SetMenuPrice(currentMenu!!.Price)
+            view.menuPrice.setTextColor(Color.BLACK)
+        }
+    }
 
     private fun SetMenuImage(img: Drawable?) {
         view.menuImage.setImageDrawable(img)
@@ -35,7 +61,11 @@ class MenuView
     }
 
     private fun SetMenuPrice(price: Int) {
-        view.menuPrice.text = price.toString() + "원"
+        if((currentMenu?.Type?:MenuType.SIDE) == MenuType.BURGER){
+            view.menuPrice.text = "단품 : " + price.toString() + "원\n" + "세트 : " + (price + 2300).toString() + "원"
+        }
+        else
+            view.menuPrice.text = price.toString() + "원"
     }
 
     fun ClearMenu() {
@@ -54,21 +84,22 @@ class MenuView
         currentMenu = menu
         view.menuRoot.elevation = 5.0f;
         isEnabled = true
+        UpdateStock()
     }
 
     override fun performClick(): Boolean {
         val intent = (context as Activity).intent
-        //intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
         super.performClick()
 
 
-        onClickEvent?.onClick(this)
+        onPerformClickEvent?.onClick(this)
 
         return true
     }
 
     fun onClick(v:View, e:MotionEvent):Boolean{
-        if(!isEnabled || currentMenu == null)
+        if(!isEnabled || isSoldOut || currentMenu == null)
             return false
         when (e.action) {
             ACTION_DOWN -> {
