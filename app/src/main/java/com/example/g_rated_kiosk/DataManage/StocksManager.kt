@@ -17,6 +17,7 @@ class StocksManager {
 
         fun sellStock(soldItems:List<cart>){
             var cnt = 0
+            var setcnt = 0
             for(i in soldItems){
                 i.menu?.let{
                     sellStock(it,i.count,cnt++)
@@ -24,19 +25,27 @@ class StocksManager {
 
                 i.side?.let {
                     sellStock(it,i.count,cnt++)
+                    setcnt++
                 }
 
                 i.drink?.let {
                     sellStock(it,i.count,cnt++)
                 }
             }
+
+            if(setcnt>0)
+                subSetPrice(setcnt,cnt)
         }
 
         fun sellStock(soldMenu: Menu, quantity:Int, suffix:Int = 0){
             DBManager.updateSales(soldMenu.Name,quantity,soldMenu.Price,suffix)
         }
 
-        fun receptStock(gotMenu: Menu, quantity:Int){
+        fun subSetPrice(quantity: Int, suffix:Int){
+            DBManager.updateSales("세트할인가",quantity,-1300,suffix)
+        }
+
+        fun receptStock(gotMenu: MenuStock, quantity:Int){
             DBManager.addIncomingStock(gotMenu.Name,quantity,gotMenu.Price)
         }
 
@@ -68,14 +77,20 @@ class StocksManager {
             for(t in MenuController.GetMenus(MenuType.BURGER)) {
                 DBManager.database.collection("stock").document("currentStock")
                     .collection("products").document(t.Name).update("price",t.Price)
+                DBManager.database.collection("stock").document("currentStock")
+                    .collection("products").document(t.Name).update("stock",20)
             }
             for(t in MenuController.GetMenus(MenuType.SIDE)) {
                 DBManager.database.collection("stock").document("currentStock")
                     .collection("products").document(t.Name).update("price",t.Price)
+                DBManager.database.collection("stock").document("currentStock")
+                    .collection("products").document(t.Name).update("stock",20)
             }
             for(t in MenuController.GetMenus(MenuType.DRINKS)) {
                 DBManager.database.collection("stock").document("currentStock")
                     .collection("products").document(t.Name).update("price",t.Price)
+                DBManager.database.collection("stock").document("currentStock")
+                    .collection("products").document(t.Name).update("stock",20)
             }
         }
 

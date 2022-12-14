@@ -1,6 +1,7 @@
 package com.example.g_rated_kiosk
 
 import android.util.Log
+import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.time.LocalDateTime
@@ -46,7 +47,7 @@ class DBManager {
                         if(currentStock != null){
                             val newValue = currentStock.toString().toLong() + quantity
 
-                            currentStockRef.update("stock", newValue)
+                            val t = currentStockRef.update("stock", newValue)
                             Log.d("$productName(currentStock)", "current stock updated to: $currentStock")
 
                         }
@@ -58,7 +59,6 @@ class DBManager {
                 .addOnFailureListener {exception ->
                     Log.d("$productName(currentStock)", "get failed with", exception)
                 }
-
         }
 
         fun addCurrentStock(productName: String, quantity:Int, price: Int){

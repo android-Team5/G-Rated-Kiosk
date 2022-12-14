@@ -5,8 +5,15 @@ import org.json.JSONObject
 class MenuStock {
     val Name:String
     var Price:Int
-    var Stock:Int
+    private var Stock:Int
 
+    fun GetStock():Int{
+        return Stock
+    }
+
+    fun SetStock(newStock:Int){
+        Stock = newStock
+    }
 
     constructor(name:String, price:Int, stock:Int){
         Name = name

@@ -22,5 +22,4 @@ class MenuAdapter(val menuViews:MutableList<MenuView>, val context: Context?) : 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         return convertView ?: LinearLayout(context)
     }
-
 }

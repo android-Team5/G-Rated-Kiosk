@@ -19,7 +19,7 @@ class MenuView
     (context: Context?, attr: AttributeSet) : LinearLayout(context!!, attr) {
 
     companion object{
-        val quantityThreshold:Int = 5 // 메뉴를 판매개시할 수 있는 최소 수량. 재고가 이 수치 이하일 경우 품절처리
+        val quantityThreshold:Int = 10 // 메뉴를 판매개시할 수 있는 최소 수량. 재고가 이 수치 이하일 경우 품절처리
     }
 
     var view: MenuviewBinding
@@ -31,7 +31,7 @@ class MenuView
         isSoldOut = true
         currentMenu?.let{
             val stock = MenuStocks.find(it.Name)
-            if((stock?.Stock ?: 0) <= quantityThreshold){
+            if((stock?.GetStock() ?: 0) <= quantityThreshold){
                 SetSoldOut(true)
             }
             else{
