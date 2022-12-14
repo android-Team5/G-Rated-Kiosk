@@ -98,9 +98,12 @@ class MenuSelect : AppCompatActivity() {
             else{
                 Common.chosenMenu.menu = (it as MenuView).currentMenu
 
-                Common.addToCart(Common.chosenMenu)
+                val index = Common.addToCart(cart(Common.chosenMenu))
+                if(index==-1)
+                    binding.recycle.adapter!!.notifyItemInserted(cartList.size-1)
+                else
+                    binding.recycle.adapter!!.notifyItemChanged(index)
                 Common.chosenMenu = cart()
-                binding.recycle.adapter!!.notifyDataSetChanged()
                 binding.recycle.scrollToPosition(cartList.size-1)
             }
         }

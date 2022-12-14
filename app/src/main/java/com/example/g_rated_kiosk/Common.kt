@@ -14,6 +14,21 @@ class cart {
     var noLettuce= false;
     var count=0;
 
+    constructor(){
+
+    }
+
+    constructor(clone:cart){
+        menu = clone.menu
+        side = clone.side
+        drink = clone.drink
+        noPickle= clone.noPickle
+        noOnion = clone.noOnion
+        noLettuce= clone.noLettuce
+        count= clone.count;
+
+    }
+
     fun getPrice():Int{
         var priceSum:Int = 0
         menu?.let{
@@ -48,11 +63,11 @@ public class Common{
 //        }
         var cartList = mutableListOf<cart>()
         var chosenMenu:cart = cart()
-        var clearCart = cart()
-        fun addToCart(cm:cart){
+        fun addToCart(cm:cart):Int{
             var check = 0
+            var index = 0
             for (cart:cart in cartList) {
-                if(cart.menu?.Name== cm.menu?.Name
+                if(cart.menu!!.Name== cm.menu!!.Name
                     && cart.side == cm.side
                     && cart.drink == cm.drink
                     && cart.noOnion == cm.noOnion
@@ -60,14 +75,16 @@ public class Common{
                     && cart.noPickle == cm.noPickle){
                     cart.count = (cart.count + 1).coerceAtMost(MenuView.quantityThreshold)
                     check=1
-                    break
+                    return index
                 }
+                index++
             }
             if(check==0) {
                cm.count=1
                 cartList.add(cm)
             }
             chosenMenu = cart()
+            return -1
         }
 
     }

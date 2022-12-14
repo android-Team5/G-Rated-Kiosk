@@ -74,23 +74,22 @@ class CartAdapter (val cartList: MutableList<cart>): RecyclerView.Adapter<Recycl
         }
         itemBinding.itemRoot.setOnClickListener { // 뷰에 이벤트 추가
         }
-      itemBinding.itemAdd.setOnClickListener { cartList[position].count = (cartList[position].count+1).coerceAtMost(MenuView.quantityThreshold)
-          notifyDataSetChanged()
-
-
+      itemBinding.itemAdd.setOnClickListener { item.count = (item.count+1).coerceAtMost(MenuView.quantityThreshold)
+          notifyItemChanged(position)
       }
-        itemBinding.itemSub.setOnClickListener { if (cartList[position].count>1){
-            cartList[position].count -=1
-
+        itemBinding.itemSub.setOnClickListener { if (item.count>1){
+            item.count -=1
+            notifyItemChanged(position)
         }
             else {
-
                 cartList.removeAt(position)
+                notifyDataSetChanged()
         }
-            notifyDataSetChanged()
         }
 
     }
+
+
     override fun getItemCount(): Int {
         return cartList.size
     }
