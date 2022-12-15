@@ -27,7 +27,7 @@ class MenuStocks {
             val stock = find(newStock.Name)
             if(stock == null){
                 stockList.add(newStock)
-                if(newStock.GetStock()<10)
+                if(newStock.GetStock()<=MenuView.quantityThreshold)
                     soldout.add(newStock)
                 else
                     notSoldout.add(newStock)
@@ -45,14 +45,14 @@ class MenuStocks {
         }
 
         fun setStockOf(stock:MenuStock,value:Int){
-            if(stock.GetStock()>=MenuView.quantityThreshold){
+            if(stock.GetStock()>MenuView.quantityThreshold){
                 if(value< MenuView.quantityThreshold) {
                     notSoldout.remove(stock)
                     soldout.add(stock)
                 }
             }
             else{
-                if(value>=MenuView.quantityThreshold){
+                if(value>MenuView.quantityThreshold){
                     soldout.remove(stock)
                     notSoldout.add(stock)
                 }
@@ -64,14 +64,14 @@ class MenuStocks {
             val st = find(name)
             if(st==null)
                 return
-            if(st.GetStock()>=MenuView.quantityThreshold){
+            if(st.GetStock()>MenuView.quantityThreshold){
                 if(value<MenuView.quantityThreshold) {
                     notSoldout.remove(st)
                     soldout.add(st)
                 }
             }
             else{
-                if(value>=MenuView.quantityThreshold){
+                if(value>MenuView.quantityThreshold){
                     soldout.remove(st)
                     notSoldout.add(st)
                 }

@@ -300,5 +300,8 @@ class AdminActivity : AppCompatActivity() {
             startActivity(Intent(this, FromHereToGo::class.java))
             finish()
         }
+
+        updateMonth()
+        updateToday()
     }
 }
