@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.TextKeyListener.clear
 import android.util.Log
 import android.view.View
 import android.widget.GridLayout
@@ -149,6 +150,13 @@ class MenuSelect : AppCompatActivity() {
              startActivity(Intent(this,OrderListActivity::class.java))
         }
         binding.backButton3.setOnClickListener {
+
+            var intent = Intent(this, FromHereToGo::class.java);
+            startActivity(intent)
+            finish()
+        }
+        binding.cancel.setOnClickListener {
+            Common.cartList.clear()
             var intent = Intent(this, FromHereToGo::class.java);
             startActivity(intent)
             finish()
